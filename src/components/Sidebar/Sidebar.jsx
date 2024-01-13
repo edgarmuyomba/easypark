@@ -44,6 +44,11 @@ export default function Sidebar() {
                     </li>
                 </Link>
             </ul>
+            <footer className={styles.footer}>
+                <p className={styles.text}>
+                    Copyright &copy; CS24-9
+                </p>
+            </footer>
         </aside>
     )
 }
