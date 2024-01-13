@@ -1,0 +1,69 @@
+div.navbar {
+    width: 100%;
+    height: 90px;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+div.navbar > a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+div.logo {
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.1rem;
+    padding-right: 0.5rem;
+    border-right: 2px solid rgb(85, 85, 85);
+    cursor: pointer;
+}
+
+img#logo {
+    height: 100%;
+    cursor: pointer;
+}
+
+p.name {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgb(85, 85, 85);
+}
+
+ul.links {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 100%;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+li.link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.profile {
+    height: 50px;
+    width: 50px;
+}
+
+img#profile {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
