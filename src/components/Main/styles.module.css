@@ -1,0 +1,4 @@
+div.main {
+    grid-area: 2 / 2 / -1 / -1;
+    padding: 1rem;
+}
