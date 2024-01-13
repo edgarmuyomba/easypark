@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import Icon from "@mdi/react";
-import { mdiViewDashboard, mdiParking, mdiAvTimer, mdiAccountSettings, mdiSmokeDetector, mdiChartBox } from "@mdi/js";
+import { mdiViewDashboard, mdiParking, mdiAvTimer, mdiAccountSettings, mdiSmokeDetectorVariant, mdiChartBox } from "@mdi/js";
 
 export default function Sidebar() {
     const [active, setActive] = useState(1);
@@ -37,7 +37,7 @@ export default function Sidebar() {
                 </Link>
                 <Link id={active == 5 ? styles.active : styles.tab} onClick={() => setActive(5)} to="sensors">
                     <li className={styles.link}>
-                        <Icon path={mdiSmokeDetector} size={1} color="rgb(241, 241, 241)" />
+                        <Icon path={mdiSmokeDetectorVariant} size={1} color="rgb(241, 241, 241)" />
                         <p className={styles.name}>Sensors</p>
                     </li>
                 </Link>
