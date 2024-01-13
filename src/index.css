@@ -19,4 +19,7 @@ body {
 div#root {
     height: 100%;
     width: 100%;
+    display: grid;
+    grid-template-rows: 90px auto;
+    grid-template-columns: 300px auto;
 }
