@@ -73,6 +73,10 @@ div.value {
     margin-top: 0.5rem;
 }
 
+div.session_tracking > div.value {
+    height: 80%;
+}
+
 p.textValue,
 p.textValue2 {
     font-size: 4rem;
@@ -99,4 +103,75 @@ div.occupancy > div.value {
 
 meter.perc_occu {
     width: 100%;
+}
+
+div.parking_lots > div.value {
+    align-items: start;
+    justify-content: start;
+}
+
+div.table {
+    width: 100%;
+}
+
+div.header {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 0.3rem 1rem;
+    border-radius: 10px 10px 0 0;
+}
+
+ul.titles {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+}
+
+li.title {
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+}
+
+div.body {
+    width: 100%;
+}
+
+ul.parking_lot {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    height: 60px;
+}
+
+li.name {
+    border-radius: 25px;
+    width: 60%;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li.name > a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(0, 70, 6);
+    transition: scale 0.2s ease-in-out;
+}
+
+li.name > a:hover {
+    scale: 1.1;
+}
+
+li.rate {
+    display: flex;
+    gap: 0.2rem;
 }

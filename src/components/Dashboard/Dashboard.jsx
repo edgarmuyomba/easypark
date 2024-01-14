@@ -1,8 +1,11 @@
+import SessionsChart from "./sessionsChart";
+
 import styles from "./styles.module.css";
 import income from '../../assets/income.png'
 
+import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
-import { mdiAccountMultiple, mdiSmokeDetectorVariant, mdiCash, mdiPercentBoxOutline, mdiAvTimer, mdiParking, mdiHelpCircleOutline, mdiMenuUp } from "@mdi/js";
+import { mdiAccountMultiple, mdiSmokeDetectorVariant, mdiCash, mdiPercentBoxOutline, mdiAvTimer, mdiParking, mdiHelpCircleOutline, mdiMenuUp, mdiMapMarkerOutline } from "@mdi/js";
 
 export default function Dashboard() {
     return (
@@ -64,7 +67,7 @@ export default function Dashboard() {
                     <p className={styles.textValue2}>
                         68%
                     </p>
-                    <meter className={styles.perc_occu} value="68" min="0" max="100" />
+                    <meter className={styles.perc_occu} value="20" min="0" max="100" low="25" high="60" optimum="100" />
                 </div>
             </div>
             <div className={styles.session_tracking}>
@@ -76,7 +79,7 @@ export default function Dashboard() {
                     <Icon className={styles.tool} path={mdiHelpCircleOutline} size={0.6} color="grey" title="User sessions analysis per hour" />
                 </div>
                 <div className={styles.value}>
-                    2000
+                    <SessionsChart />
                 </div>
             </div>
             <div className={styles.parking_lots}>
@@ -88,7 +91,71 @@ export default function Dashboard() {
                     <Icon className={styles.tool} path={mdiHelpCircleOutline} size={0.6} color="grey" title="Registered parking lots" />
                 </div>
                 <div className={styles.value}>
-                    2000
+                    <div className={styles.table}>
+                        <div className={styles.header}>
+                            <ul className={styles.titles}>
+                                <li className={styles.title}>
+                                    Location
+                                </li>
+                                <li className={styles.title}>
+                                    Lot
+                                </li>
+                                <li className={styles.title}>
+                                    Income (UGX)
+                                </li>
+                                <li className={styles.title}>
+                                    Usage Rate
+                                </li>
+                            </ul>
+                        </div>
+                        <div className={styles.body}>
+                            <ul className={styles.parking_lot}>
+                                <li className={styles.location}>value</li>
+                                <li className={styles.name}><Link>value</Link></li>
+                                <li className={styles.value}>89,000,000</li>
+                                <li className={styles.rate}>
+                                    <p className={styles.val}>75%</p>
+                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
+                                </li>
+                            </ul>
+                            <ul className={styles.parking_lot}>
+                                <li className={styles.location}>value</li>
+                                <li className={styles.name}><Link>value</Link></li>
+                                <li className={styles.value}>89,000,000</li>
+                                <li className={styles.rate}>
+                                    <p className={styles.val}>75%</p>
+                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
+                                </li>
+                            </ul>
+                            <ul className={styles.parking_lot}>
+                                <li className={styles.location}>value</li>
+                                <li className={styles.name}><Link>value</Link></li>
+                                <li className={styles.value}>89,000,000</li>
+                                <li className={styles.rate}>
+                                    <p className={styles.val}>75%</p>
+                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
+                                </li>
+                            </ul>
+                            <ul className={styles.parking_lot}>
+                                <li className={styles.location}>value</li>
+                                <li className={styles.name}><Link>value</Link></li>
+                                <li className={styles.value}>89,000,000</li>
+                                <li className={styles.rate}>
+                                    <p className={styles.val}>75%</p>
+                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
+                                </li>
+                            </ul>
+                            <ul className={styles.parking_lot}>
+                                <li className={styles.location}>value</li>
+                                <li className={styles.name}><Link>value</Link></li>
+                                <li className={styles.value}>89,000,000</li>
+                                <li className={styles.rate}>
+                                    <p className={styles.val}>75%</p>
+                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
