@@ -40,7 +40,6 @@ div.parking_lots {
 }
 
 div.title {
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: start;
@@ -49,10 +48,55 @@ div.title {
 
 div.icon {
     border-radius: 50%;
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: orange;
+}
+
+p.text {
+    font-size: 0.85rem;
+}
+
+svg.tool {
+    margin-left: auto;
+}
+
+div.value {
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+p.textValue,
+p.textValue2 {
+    font-size: 4rem;
+    font-family: var(--text-value-font);
+    font-weight: 700;
+    letter-spacing: -10px;
+    color: rgb(68, 68, 68);
+}
+
+svg.up {
+    align-self: end;
+}
+
+p.textValue2 {
+    font-size: 2rem;
+    letter-spacing: -2px;
+}
+
+div.occupancy > div.value {
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+meter.perc_occu {
+    width: 100%;
 }

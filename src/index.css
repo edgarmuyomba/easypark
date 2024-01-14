@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,600;0,700;1,600;1,700&display=swap');
 
 :root {
     font-size: calc(0.8vh + 0.8vw);
+    --text-value-font: 'Roboto Mono', monospace, Arial, Helvetica, sans-serif;
 }
 
 * {
