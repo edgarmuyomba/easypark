@@ -157,7 +157,7 @@ export default function Dashboard() {
                                                     <p className={styles.val}>{lot.occupancy}%</p>
                                                     <meter className={styles.rate} value={lot.occupancy} min="0" max="100" low="25" high="60" optimum="100" />
                                                 </li>
-                                                <Link to="parking_lot/uuid" className={styles.lot}>
+                                                <Link to={`/parking_lot/${lot.uuid}`} className={styles.lot}>
                                                     <Icon path={mdiChevronDoubleRight} size={1} />
                                                 </Link>
                                             </ul>

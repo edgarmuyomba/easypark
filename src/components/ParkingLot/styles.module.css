@@ -1,0 +1,93 @@
+div.parkingLotDetails {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 7.5fr 2.5fr;
+    grid-template-rows: 90px auto;
+}
+
+aside.details {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    height: calc(100vh - 90px);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img.banner {
+    height: 30%;
+    width: 100%;
+}
+
+p.name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: rgb(71, 71, 71);
+    margin-top: 0.5rem;
+}
+
+div.time {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.7rem;
+    align-items: center;
+    font-size: 0.7rem;
+}
+
+div.slotDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 0.7rem;
+}
+
+div.noStories,
+div.occupancy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.caption {
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    font-size: 0.7rem;
+}
+
+p.occupancy {
+    margin-top: 0.7rem;
+}
+
+div.servicesProvided {
+    width: 80%;
+    margin-top: 0.7rem;
+}
+
+p.title {
+    font-size: 0.9rem;
+    color: rgb(71, 71, 71);
+}
+
+ul.services {
+    list-style-type: none;
+}
+
+li.service {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: start;
+    gap: 0.4rem;
+}
+
+div.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+
+p.name {
+    font-size: 0.8rem;
+}
