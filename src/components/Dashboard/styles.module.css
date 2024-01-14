@@ -7,6 +7,14 @@ div.dashboard {
     gap: 0.5rem;
 }
 
+div.loading {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 div.dashboard > div {
     height: 100%;
     width: 100%;
