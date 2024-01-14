@@ -1,8 +1,17 @@
 div.parkingLotDetails {
     width: 100vw;
+    height: 100vh;
     display: grid;
     grid-template-columns: 7.5fr 2.5fr;
     grid-template-rows: 90px auto;
+}
+
+div.loading {
+    width: 100%;
+    height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 aside.details {
@@ -90,4 +99,65 @@ div.icon {
 
 p.name {
     font-size: 0.8rem;
+}
+
+div.lots {
+    height: calc(100vh - 90px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+section.lot {
+    height: calc(100vh - 90px);
+    padding: 1rem;
+}
+
+div.slots {
+    margin-top: 0.5rem;
+    height: 95%;
+    width: 100%;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(10, calc(90% / 10));
+    gap: 0.7rem
+}
+
+div.slot,
+div.slotOccupied {
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+div.slotOccupied {
+    background-color: lightcoral;
+}
+
+div.slot:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+div.slotOccupied:hover {
+    background-color: rgb(245, 103, 103);
+}
+
+p.label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: rgb(58, 58, 58);
+}
+
+p.lotNumber {
+    font-weight: bold;
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+    border-left: 3px solid green;
+    /* border: 1px solid red; */
+    background-color: whitesmoke;
 }
