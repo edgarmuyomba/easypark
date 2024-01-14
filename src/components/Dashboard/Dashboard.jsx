@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import SessionsChart from "./sessionsChart";
 
 import styles from "./styles.module.css";
@@ -5,9 +6,30 @@ import income from '../../assets/income.png'
 
 import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
-import { mdiAccountMultiple, mdiSmokeDetectorVariant, mdiCash, mdiPercentBoxOutline, mdiAvTimer, mdiParking, mdiHelpCircleOutline, mdiMenuUp, mdiMapMarkerOutline } from "@mdi/js";
+import { mdiAccountMultiple, mdiSmokeDetectorVariant, mdiCash, mdiPercentBoxOutline, mdiAvTimer, mdiParking, mdiHelpCircleOutline, mdiMenuUp, mdiMapMarkerOutline, mdiChevronDoubleRight } from "@mdi/js";
 
 export default function Dashboard() {
+    const [users, setUsers] = useState("0");
+    const [sensors, setSensors] = useState("0");
+    const [income, setIncome] = useState("0");
+    const [occupancy, setOccupancy] = useState(0);
+    const [sessionData, setSessionData] = useState({});
+    const [parkingLots, setParkingLots] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('http://localhost:8000/dashboard/');
+            const data = await response.json();
+            setUsers(data.no_users);
+            setSensors(data.no_sensors);
+            setIncome(data.expected_income);
+            setOccupancy(data.total_occupancy);
+            setSessionData(data.session_data);
+            setParkingLots(data.parking_lots);
+        }
+        fetchData();
+    }, [])
+
     return (
         <div className={styles.dashboard}>
             <div className={styles.users}>
@@ -20,7 +42,7 @@ export default function Dashboard() {
                 </div>
                 <div className={styles.value}>
                     <p className={styles.textValue}>
-                        2000
+                        {users}
                     </p>
                     <Icon className={styles.up} path={mdiMenuUp} size={1.2} color="green" />
                 </div>
@@ -35,7 +57,7 @@ export default function Dashboard() {
                 </div>
                 <div className={styles.value}>
                     <p className={styles.textValue}>
-                        2000
+                        {sensors}
                     </p>
                     <Icon className={styles.up} path={mdiMenuUp} size={1.2} color="green" />
                 </div>
@@ -50,7 +72,7 @@ export default function Dashboard() {
                 </div>
                 <div className={styles.value}>
                     <p className={styles.textValue}>
-                        2000
+                        {income}
                     </p>
                     <Icon className={styles.up} path={mdiMenuUp} size={1.2} color="green" />
                 </div>
@@ -65,9 +87,9 @@ export default function Dashboard() {
                 </div>
                 <div className={styles.value}>
                     <p className={styles.textValue2}>
-                        68%
+                        {occupancy}%
                     </p>
-                    <meter className={styles.perc_occu} value="20" min="0" max="100" low="25" high="60" optimum="100" />
+                    <meter className={styles.perc_occu} value={occupancy} min="0" max="100" low="25" high="60" optimum="100" />
                 </div>
             </div>
             <div className={styles.session_tracking}>
@@ -79,7 +101,7 @@ export default function Dashboard() {
                     <Icon className={styles.tool} path={mdiHelpCircleOutline} size={0.6} color="grey" title="User sessions analysis per hour" />
                 </div>
                 <div className={styles.value}>
-                    <SessionsChart />
+                    <SessionsChart data={sessionData} />
                 </div>
             </div>
             <div className={styles.parking_lots}>
@@ -98,62 +120,31 @@ export default function Dashboard() {
                                     Location
                                 </li>
                                 <li className={styles.title}>
-                                    Lot
-                                </li>
-                                <li className={styles.title}>
                                     Income (UGX)
                                 </li>
                                 <li className={styles.title}>
-                                    Usage Rate
+                                    Occupancy Rate
                                 </li>
                             </ul>
                         </div>
                         <div className={styles.body}>
-                            <ul className={styles.parking_lot}>
-                                <li className={styles.location}>value</li>
-                                <li className={styles.name}><Link>value</Link></li>
-                                <li className={styles.value}>89,000,000</li>
-                                <li className={styles.rate}>
-                                    <p className={styles.val}>75%</p>
-                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
-                                </li>
-                            </ul>
-                            <ul className={styles.parking_lot}>
-                                <li className={styles.location}>value</li>
-                                <li className={styles.name}><Link>value</Link></li>
-                                <li className={styles.value}>89,000,000</li>
-                                <li className={styles.rate}>
-                                    <p className={styles.val}>75%</p>
-                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
-                                </li>
-                            </ul>
-                            <ul className={styles.parking_lot}>
-                                <li className={styles.location}>value</li>
-                                <li className={styles.name}><Link>value</Link></li>
-                                <li className={styles.value}>89,000,000</li>
-                                <li className={styles.rate}>
-                                    <p className={styles.val}>75%</p>
-                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
-                                </li>
-                            </ul>
-                            <ul className={styles.parking_lot}>
-                                <li className={styles.location}>value</li>
-                                <li className={styles.name}><Link>value</Link></li>
-                                <li className={styles.value}>89,000,000</li>
-                                <li className={styles.rate}>
-                                    <p className={styles.val}>75%</p>
-                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
-                                </li>
-                            </ul>
-                            <ul className={styles.parking_lot}>
-                                <li className={styles.location}>value</li>
-                                <li className={styles.name}><Link>value</Link></li>
-                                <li className={styles.value}>89,000,000</li>
-                                <li className={styles.rate}>
-                                    <p className={styles.val}>75%</p>
-                                    <meter className={styles.rate} value="20" min="0" max="100" low="25" high="60" optimum="100" />
-                                </li>
-                            </ul>
+                            {
+                                parkingLots.map((lot, index) => {
+                                    return (
+                                        <ul key={index} className={styles.parking_lot}>
+                                            <li className={styles.location}>{lot.name}</li>
+                                            <li className={styles.value}>{lot.income}</li>
+                                            <li className={styles.rate}>
+                                                <p className={styles.val}>{lot.occupancy}%</p>
+                                                <meter className={styles.rate} value={lot.occupancy} min="0" max="100" low="25" high="60" optimum="100" />
+                                            </li>
+                                            <Link to="parking_lot/uuid" className={styles.lot}>
+                                                <Icon path={mdiChevronDoubleRight} size={1} />
+                                            </Link>
+                                        </ul>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>

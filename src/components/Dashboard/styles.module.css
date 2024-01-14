@@ -127,7 +127,7 @@ div.header {
 ul.titles {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr) 0.1fr;
     list-style-type: none;
 }
 
@@ -143,7 +143,7 @@ div.body {
 ul.parking_lot {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr) 0.1fr;
     list-style-type: none;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     margin-top: 0.5rem;
@@ -151,27 +151,22 @@ ul.parking_lot {
     height: 60px;
 }
 
-li.name {
-    border-radius: 25px;
-    width: 60%;
-    background-color: whitesmoke;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-li.name > a {
-    text-decoration: none;
-    font-weight: bold;
-    color: rgb(0, 70, 6);
-    transition: scale 0.2s ease-in-out;
-}
-
-li.name > a:hover {
-    scale: 1.1;
-}
-
 li.rate {
     display: flex;
+    align-items: center;
     gap: 0.2rem;
+}
+
+p.val {
+    font-size: 0.8rem;
+    color: rgb(61, 61, 61);
+}
+
+a.lot {
+    color: rgb(0, 64, 80);
+    transition: transform 0.2s ease-in-out;
+}
+
+a.lot:hover {
+    transform: translateX(5px);
 }
