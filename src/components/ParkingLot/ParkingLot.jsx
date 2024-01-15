@@ -4,9 +4,11 @@ import styles from "./styles.module.css";
 import Icon from "@mdi/react";
 import { mdiSecurity, mdiCctv, mdiCarBrakeParking } from "@mdi/js";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader"
+
+import handleSlotOptionClick from "./utils.js";
 
 export default function ParkingLot() {
     const { uuid } = useParams();
@@ -14,6 +16,14 @@ export default function ParkingLot() {
     const [loading, setLoading] = useState(true);
     const [details, setDetails] = useState({});
     const [levels, setLevels] = useState([]);
+    const [slots, setSlots] = useState([]);
+
+    const responseRef = useRef(null);
+    const [response, setResponse] = useState('This is a response');
+    const [respstyles, setRespstyles] = useState({ backgroundColor: 'rgb(131, 255, 131)', color: 'rgb(0, 58, 0)', border: 'none' });
+
+    const optionsRef = useRef(null);
+    const lotsRef = useRef(null);
 
     function processLevels(number, slots) {
         let results = [];
@@ -27,6 +37,27 @@ export default function ParkingLot() {
         return results;
     }
 
+    function handleClick() {
+
+    }
+
+    function showOptions(e) {
+        optionsRef.current.style.display = 'block';
+        optionsRef.current.style.top = `${e.clientY}px`;
+        optionsRef.current.style.left = `${e.clientX}px`;
+    }
+
+    (() => {
+        document.onclick = (e) => {
+            let x = e.clientX, y = e.clientY;
+            let rect = lotsRef.current.getBoundingClientRect();
+            
+            if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
+                optionsRef.current.style.display = 'none';
+            }
+        }
+    })();
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,6 +66,7 @@ export default function ParkingLot() {
                 setDetails(data);
                 const levels = processLevels(data.number_of_stories, data.slots);
                 setLevels(levels);
+                setSlots(data.slots);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -42,7 +74,7 @@ export default function ParkingLot() {
             }
         }
         fetchData();
-    }, [uuid]);
+    }, [uuid, slots]);
 
     function serviceIcon(key) {
         switch (key) {
@@ -71,6 +103,9 @@ export default function ParkingLot() {
     return (
         <div className={styles.parkingLotDetails}>
             <Navbar />
+            <div className={styles.response} style={respstyles} ref={responseRef}>
+                <p className={styles.text}>{response}</p>
+            </div>
             {
                 loading
                     ? (
@@ -84,17 +119,33 @@ export default function ParkingLot() {
                     )
                     : (
                         <>
-                            <div className={styles.lots}>
+                            <div className={styles.lots} ref={lotsRef}>
+                                <div className={styles.options} ref={optionsRef}>
+                                    <ul className={styles.list}>
+                                        <li className={styles.option}>
+                                            <p className={styles.text}>Park</p>
+                                        </li>
+                                        <li className={styles.option}>
+                                            <p className={styles.text}>Release</p>
+                                        </li>
+                                        <li className={styles.option}>
+                                            <p className={styles.text}>Edit</p>
+                                        </li>
+                                        <li className={styles.option}>
+                                            <p className={styles.text}>Modify</p>
+                                        </li>
+                                    </ul>
+                                </div>
                                 {
                                     levels.map((level, index) => {
                                         return (
                                             <section key={index} className={styles.lot}>
-                                                <p className={styles.lotNumber}>{`Level ${index+1}`}</p>
+                                                <p className={styles.lotNumber}>{`Level ${index + 1}`}</p>
                                                 <div className={styles.slots}>
                                                     {
                                                         level.map((slot, index) => {
                                                             return (
-                                                                <div className={slot.occupied ? styles.slotOccupied : styles.slot}>
+                                                                <div key={index} className={slot.occupied ? styles.slotOccupied : styles.slot} onClick={(e) => showOptions(e)}>
                                                                     <p className={styles.label} style={{ color: slot.occupied ? 'white' : 'rgb(58, 58, 58)' }}>
                                                                         {slot.slot_number}
                                                                     </p>

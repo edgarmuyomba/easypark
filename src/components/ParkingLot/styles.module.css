@@ -144,7 +144,7 @@ div.slot:hover {
 }
 
 div.slotOccupied:hover {
-    background-color: rgb(245, 103, 103);
+    background-color: rgb(241, 92, 92);
 }
 
 p.label {
@@ -158,6 +158,71 @@ p.lotNumber {
     padding: 0.5rem 0;
     padding-left: 0.5rem;
     border-left: 3px solid green;
-    /* border: 1px solid red; */
     background-color: whitesmoke;
+}
+
+div.response,
+div.slideIn,
+div.slideOut {
+    position: absolute;
+    left: calc(50% - 150px);
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    top: -80px;
+}
+
+div.slideIn {
+    animation: slideIn 0.5s ease-in-out alternate;
+}
+
+@keyframes slideIn {
+    from {
+        top: -80px;
+    } 
+    to {
+        top: 0;
+    }
+}
+
+div.slideOut {
+    animation: slideOut 0.5s ease-in-out alternate;
+}
+
+@keyframes slideOut {
+    from {
+        top: 0;
+    } 
+    to {
+        top: -80px;
+    }
+}
+
+div.options {
+    background-color: whitesmoke;
+    position: absolute;
+    width: 150px;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0.3rem;
+    border-radius: 7px;
+    display: none;
+}
+
+ul.list {
+    list-style-type: none;
+}
+
+li.option {
+    padding: 0.3rem;
+    border-radius: 3.5px;
+}
+
+p.text {
+    font-size: 0.7rem;
+}
+
+li.option:hover {
+    background-color: rgb(180, 180, 180);
+    color: white;
 }
