@@ -39,15 +39,26 @@ export default function ParkingLot() {
         return results;
     }
 
-    function handleClick(slot, action) {
+    async function handleClick(slot, action) {
         let tmp = slots;
-        const result = handleSlotOptionClick(slot, tmp, action);
+        const result = await handleSlotOptionClick(slot, tmp, action);
         setSlots(result.slots);
         processLevels(number, slots);
+        handleMessage(result.message, result.styles);
     }
 
-    function handleMessage(message, styles) {
+    function handleMessage(message, _styles) {
+        setResponse(message);
+        _styles === null 
+        ? null
+        : setRespstyles(_styles);
         
+        responseRef.current.className = styles.slideIn;
+        responseRef.current.style.top = "0";
+        setTimeout(() => {
+            responseRef.current.className = styles.slideOut;
+            responseRef.current.style.top = "-80px";
+        }, 3000);
     }
 
     (() => {

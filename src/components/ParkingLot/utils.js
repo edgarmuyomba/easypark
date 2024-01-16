@@ -1,8 +1,8 @@
-export default function handleSlotOptionClick(slot, slots, action) {
+export default async function handleSlotOptionClick(slot, slots, action) {
     let result = {};
     switch (action) {
         case "park":
-            result = park(slot, slots);
+            result = await park(slot, slots);
             break;
         case "release":
             break;
@@ -27,10 +27,10 @@ const park = async (slot, slots) => {
         method: "POST"
     };
 
-    try {
-        const response = await fetch(`http://localhost:8000/park_in_slot/${slot.parking_lot}/${slot.uuid}/`, options);
-        data = await response.json();
-    } catch (error) {
+
+    const response = await fetch(`http://localhost:8000/park_in_slot/${slot.parking_lot}/${slot.uuid}/`, options);
+    data = await response.json();
+    if (response.status === 400) {
         styles = {
             backgroundColor: 'rgb(255, 130, 107)',
             color: 'rgb(116, 0, 0)',
@@ -38,8 +38,7 @@ const park = async (slot, slots) => {
             borderTop: 'none',
             fontWeight: 'normal'
         };
-        data = error;
-    } finally {
+    } else {
         for (let _slot of slots) {
             if (slot.uuid === _slot.uuid) {
                 _slot.occupied = true;
@@ -47,10 +46,8 @@ const park = async (slot, slots) => {
         }
     }
 
-    console.log(slots);
-
     return {
-        "message": data,
+        "message": data.detail,
         "styles": styles,
         "slots": slots
     }
