@@ -66,11 +66,14 @@ export default function ParkingLot() {
 
     (() => {
         // hiding the option block
-        document.onclick = (e) => {
-            let x = e.clientX, y = e.clientY;
-            let rect = lotsRef.current.getBoundingClientRect();
-            if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) setOption(null);
-        }
+        lotsRef !== null
+            ?
+            document.onclick = (e) => {
+                let x = e.clientX, y = e.clientY;
+                let rect = lotsRef.current.getBoundingClientRect();
+                if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) setOption(null);
+            }
+            : null
     })();
 
     useEffect(() => {

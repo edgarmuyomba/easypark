@@ -16,37 +16,39 @@ export default function Router() {
             element: <App />,
             children: [
                 {
-                    index: true,
+                    // index: true,
+                    path: 'dashboard/',
                     element: <Dashboard />
                 },
                 {
-                    path: 'parking_lots',
+                    index: true,
+                    path: 'parking_lots/',
                     element: <ParkingLots />
                 },
                 {
-                    path: 'sessions',
+                    path: 'sessions/',
                     element: <Sessions />
                 },
                 {
-                    path: 'users',
+                    path: 'users/',
                     element: <Users />
                 },
                 {
-                    path: 'sensors',
+                    path: 'sensors/',
                     element: <Sensors />
                 },
                 {
-                    path: 'reports',
+                    path: 'reports/',
                     element: <Reports />
                 }
             ]
         },
         {
-            path: 'parking_lot/:uuid',
+            path: 'parking_lot/:uuid/',
             element: <ParkingLot />
         },
         {
-            path: 'user/:user_id',
+            path: 'user/:user_id/',
             element: <User />
         }
     ]);

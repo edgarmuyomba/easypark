@@ -1,4 +1,64 @@
-div.parkinglots {
+div.parkinglots,
+div.loading {
     height: 100%;
     width: 100%;
+}
+
+div.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.parkinglots {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+}
+
+a.lot {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: scale 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+a.lot:hover {
+    scale: 1.05;
+}
+
+div.image {
+    height: 70%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+div.details {
+    height: 30%;
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.details > p {
+    color: rgb(39, 39, 39);
+}
+
+p.name {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+p.time {
+    font-size: 0.6rem;
+}
+
+p.occupancy {
+    font-size: 0.7rem;
 }
