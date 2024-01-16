@@ -14,6 +14,24 @@ div.parkinglots {
     display: grid;
     gap: 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    grid-template-rows: 50px auto;
+    position: relative;
+}
+
+div.new {
+    grid-area: 1 / 1 / 2 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+button.addLot {
+    padding: 0.5rem 1rem;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.75rem;
 }
 
 a.lot {
@@ -61,4 +79,32 @@ p.time {
 
 p.occupancy {
     font-size: 0.7rem;
+}
+
+/* registering a new parking lot */
+
+div.registerCont {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.199);
+    backdrop-filter: blur(100px);
+    border-radius: 10px;
+}
+
+div.registerLot {
+    height: 100%;
+    width: 45%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.header {
+    font-weight: bold;
+    font-size: 1.2rem;
 }

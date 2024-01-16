@@ -38,6 +38,55 @@ export default function ParkingLots() {
     } else {
         return (
             <div className={styles.parkinglots}>
+                <div className={styles.new}>
+                    <button className={styles.addLot}>
+                        New Lot
+                    </button>
+                </div>
+                <div className={styles.registerCont}>
+                    <div className={styles.registerLot}>
+                        <p className={styles.header}>Register a new parking lot</p>
+                        <div className={styles.form}>
+                            <form action="" method="POST" encType="multipart/form-data">
+                                <div className={styles.input}>
+                                    <label htmlFor="image">Image</label>
+                                    <input type="file" id="image" placeholder="Image" />
+                                </div>
+                                <div className={styles.input}>
+                                    <label htmlFor="name">Name</label>
+                                    <input type="text" id="name" placeholder="Name" />
+                                </div>
+                                <div className={styles.coords}>
+                                    <p className={styles.title}>Location</p>
+                                    <label htmlFor="lat">Latitude</label>
+                                    <input type="number" id="lat" placeholder="Latititude" />
+                                    <label htmlFor="lon">Longitude</label>
+                                    <input type="number" id="lon" placeholder="Longitude" />
+                                </div>
+                                <div className={styles.input}>
+                                    <label htmlFor="rate">Rate</label>
+                                    <input type="number" id="rate" placeholder="Rate Per Hour" />
+                                </div>
+                                <div className={styles.time}>
+                                    <p className={styles.title}>Opening and Closing time</p>
+                                    <label htmlFor="open">Open</label>
+                                    <input type="time" id="open" placeholder="Open" />
+                                    <label htmlFor="close">Close</label>
+                                    <input type="time" id="close" placeholder="Close" />
+                                </div>
+                                <div className={styles.input}>
+                                    <label htmlFor="noStories">Stories</label>
+                                    <input type="number" id="noStories" placeholder="Number of Stories" />
+                                </div>
+                                <div className={styles.input}>
+                                    <label htmlFor="services">Services</label>
+                                    <input type="text" id="services" placeholder="Services Provided" />
+                                </div>
+                                <input className={styles.submit} type="submit" value="Create Lot" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 {
                     lots.map((lot, index) => {
                         return (
