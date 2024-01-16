@@ -1,4 +1,75 @@
-div.sessions {
+div.sessions,
+div.loading {
     height: 100%;
     width: 100%;
+}
+
+div.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.sessions {
+    display: flex;
+    flex-direction: column;
+}
+
+div.lots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+    gap: 0.5rem;
+}
+
+div.lot {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+div.lot:hover {
+    background-color: rgb(209, 209, 209);
+}
+
+p.text {
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgb(32, 32, 32);
+}
+
+div.lotSessions {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+    gap: 0.5rem;
+    border-top: 1px solid grey;
+    padding-top: 1rem;
+}
+
+div.session {
+    background-color: rgb(255, 223, 228);
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.slotNo {
+    font-size: 0.7rem;
+    font-size: bold;
+}
+
+p.time {
+    color: red;
+    font-size: 0.7rem;
+}
+
+p.amount {
+    font-size: 0.7rem;
+    color: rgb(0, 122, 0);
 }
