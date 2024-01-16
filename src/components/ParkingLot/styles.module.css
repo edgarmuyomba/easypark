@@ -32,15 +32,33 @@ p.name {
     font-weight: bold;
     font-size: 1.1rem;
     color: rgb(71, 71, 71);
-    margin-top: 0.5rem;
+    border-radius: 5px;
+}
+
+aside.details > p.name {
+    margin-top: 0.2rem;
+    padding: 0.3rem;
+    border: 1px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 div.time {
     display: flex;
     flex-direction: column;
-    margin-top: 0.7rem;
+    margin-top: 0.4rem;
     align-items: center;
     font-size: 0.7rem;
+}
+
+div.time > p.value {
+    padding: 0.3rem;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 div.slotDetails {
@@ -55,6 +73,16 @@ div.noStories,
 div.occupancy {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+div.noStories > p.value,
+div.occupancy > p.occupancy {
+    padding: 0.3rem;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
     align-items: center;
 }
 
@@ -73,9 +101,19 @@ div.servicesProvided {
     margin-top: 0.7rem;
 }
 
+div.servicesProvided > p.title {
+    justify-content: space-between;
+}
+
 p.title {
     font-size: 0.9rem;
     color: rgb(71, 71, 71);
+    padding: 0.3rem;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 ul.services {
@@ -85,8 +123,11 @@ ul.services {
 li.service {
     margin-top: 0.5rem;
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: 0.4rem;
+    padding: 0.3rem;
+    border: 1px solid white;
+    cursor: pointer;
 }
 
 div.icon {
@@ -172,8 +213,8 @@ div.view {
     cursor: pointer;
     border: 1px solid rgba(99, 99, 99, 0.2);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    padding: 0.3rem;
-    border-radius: 0 0 3.5px;
+    padding: 0.2rem;
+    border-radius: 3.5px;
     margin-top: 0.3rem;
     transform: translateY(110%);
     position: absolute;
@@ -236,4 +277,44 @@ div.slideOut {
     to {
         top: -80px;
     }
+}
+
+/* service side modification styles */
+li.service:hover {
+    border: 1px solid tomato;
+    border-radius: 5px;
+    background-color: rgb(255, 179, 165);
+}
+
+svg.deleteService {
+    margin-left: auto;
+    display: none;
+}
+
+li.service:hover > svg.deleteService {
+    display: block;
+}
+
+aside.details > p.name > svg.edit,
+div.time svg.edit,
+div.noStories svg.edit,
+div.occupancy svg.edit,
+p.title > svg.edit {
+    display: none;
+}
+
+aside.details > p.name:hover > svg.edit,
+div.time p.value:hover svg.edit,
+div.noStories p.value:hover svg.edit,
+div.occupancy p.occupancy:hover svg.edit,
+p.title:hover > svg.edit {
+    display: block;
+}
+
+aside.details > p.name:hover,
+div.time p.value:hover,
+div.noStories p.value:hover,
+div.occupancy p.occupancy:hover,
+p.title:hover {
+    background-color: whitesmoke;
 }

@@ -2,13 +2,13 @@ import Navbar from "../Navbar/Navbar.jsx";
 
 import styles from "./styles.module.css";
 import Icon from "@mdi/react";
-import { mdiSecurity, mdiCctv, mdiCarBrakeParking } from "@mdi/js";
+import { mdiSecurity, mdiCctv, mdiCarBrakeParking, mdiTrashCanOutline, mdiPencilOutline } from "@mdi/js";
 
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader"
 
-import handleSlotOptionClick from "./utils.js";
+import handleSlotOptionClick from "./optionUtils.js";
 
 export default function ParkingLot() {
     const { uuid } = useParams();
@@ -40,6 +40,7 @@ export default function ParkingLot() {
     }
 
     async function handleClick(slot, action) {
+        // option tab click
         let tmp = slots;
         const result = await handleSlotOptionClick(slot, tmp, action);
         setSlots(result.slots);
@@ -49,6 +50,7 @@ export default function ParkingLot() {
     }
 
     function handleMessage(message, _styles) {
+        // displaying an action response
         setResponse(message);
         _styles === null
             ? null
@@ -63,6 +65,7 @@ export default function ParkingLot() {
     }
 
     (() => {
+        // hiding the option block
         document.onclick = (e) => {
             let x = e.clientX, y = e.clientY;
             let rect = lotsRef.current.getBoundingClientRect();
@@ -166,9 +169,9 @@ export default function ParkingLot() {
                                                                             }}>
                                                                                 <p className={styles.text}>Release</p>
                                                                             </li>
-                                                                            <li className={styles.option}>
+                                                                            {/* <li className={styles.option}>
                                                                                 <p className={styles.text}>Edit</p>
-                                                                            </li>
+                                                                            </li>  still figuring out edit block style options */}
                                                                             <li className={styles.option} onClick={() => {
                                                                                 handleClick(slot, "destroy")
                                                                             }}>
@@ -188,23 +191,38 @@ export default function ParkingLot() {
                             </div>
                             <aside className={styles.details}>
                                 <img className={styles.banner} src={details.image} alt="parking_lot_banner" />
-                                <p className={styles.name}>{details.name}</p>
+                                <p className={styles.name}>
+                                    {details.name}
+                                    <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
+                                </p>
                                 <div className={styles.time}>
-                                    <p className={styles.value}>{details.open} - {details.close}</p>
+                                    <p className={styles.value}>
+                                        {details.open} - {details.close}
+                                        <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
+                                    </p>
                                     <p className={styles.caption}>Operating Hours</p>
                                 </div>
                                 <div className={styles.slotDetails}>
                                     <div className={styles.noStories}>
-                                        <p className={styles.value}>{details.number_of_stories}</p>
+                                        <p className={styles.value}>
+                                            {details.number_of_stories}
+                                            <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
+                                        </p>
                                         <p className={styles.caption}>Number of Stories</p>
                                     </div>
                                     <div className={styles.occupancy}>
-                                        <p className={styles.occupancy}>{details.occupancy}</p>
+                                        <p className={styles.occupancy}>
+                                            {details.occupancy}
+                                            <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
+                                        </p>
                                         <p className={styles.caption}>Occupancy</p>
                                     </div>
                                 </div>
                                 <div className={styles.servicesProvided}>
-                                    <p className={styles.title}>Services Provided</p>
+                                    <p className={styles.title}>
+                                        Services Provided
+                                        <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
+                                    </p>
                                     <ul className={styles.services}>
                                         {
                                             details.services_provided.map((service, index) => {
@@ -212,6 +230,7 @@ export default function ParkingLot() {
                                                     <li key={index} className={styles.service}>
                                                         {serviceIcon(service)}
                                                         <p className={styles.name}>{service}</p>
+                                                        <Icon className={styles.deleteService} path={mdiTrashCanOutline} size={1} color="rgb(255, 97, 57)" />
                                                     </li>
                                                 )
                                             })
