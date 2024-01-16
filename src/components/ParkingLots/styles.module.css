@@ -90,9 +90,9 @@ div.registerCont {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.199);
-    backdrop-filter: blur(100px);
+    background-color: rgb(21, 31, 44);
     border-radius: 10px;
+    padding: 1rem 0;
 }
 
 div.registerLot {
@@ -102,9 +102,90 @@ div.registerLot {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(128, 128, 128, 0.11);
+    backdrop-filter: blur(100px);
+    border-radius: 5px;
 }
 
 p.header {
-    font-weight: bold;
+    font-weight: 400;
     font-size: 1.2rem;
+    color: white;
+}
+
+div.input {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+}
+
+div.time {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    backdrop-filter: blur(150px);
+    padding: 0.75rem;
+    border-radius: 10px;
+}
+
+p.title {
+    color: whitesmoke;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+div.time > p.title {
+    grid-area: 1 / 1 / 2 / -1;
+}
+
+div.time > label:first-child {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+div.time > input#open {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+div.time > label[for="close"] {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+div.time > input[type="time"] {
+    width: 50%;
+}
+
+div.coords {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    backdrop-filter: blur(150px);
+    padding: 0.75rem;
+    border-radius: 10px;
+}
+
+div.coords > p.title {
+    grid-area: 1 / 1 / 2 / -1;
+}
+
+div.coords > label:nth-child(2) {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+div.coords > input:nth-child(3) {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+div.coords > input {
+    width: 60%;
+}
+
+label {
+    font-size: 0.75rem;
+    color: rgb(161, 161, 161);
+    margin-bottom: 0.3rem;
+}
+
+input {
+    padding: 0.3rem 0.5rem;
+    border-radius: 10px;
 }

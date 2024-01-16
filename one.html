@@ -22,42 +22,32 @@
             justify-content: center;
         }
 
-        div.block {
-            height: 300px;
-            overflow-y: hidden;
-            overflow-x: hidden;
-            width: 150px;
-            background-color: green;
+        div.input {
             display: flex;
-            align-items: end;
+            align-items: center;
         }
 
-        div.slide {
-            height: 150px;
-            width: 150px;
-            background-color: orange;
-            transform: translateY(100%);
+        label {
+            border: 1px solid grey;
+            padding: 0.2rem;
+            background-color: grey;
         }
 
-        div.block:hover > div.slide {
-            animation: slideIn 0.2s ease-in alternate;
-        } 
+        input {
+            padding: 0.3rem;
+            border: 1px solid grey;
+        }
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
+        input:focus {
+            outline: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="block">
-        <div class="slide"></div>
+    <div class="input">
+        <label for="id">Label</label>
+        <input type="text" id="id" placeholder="Title" required />
     </div>
 </body>
 

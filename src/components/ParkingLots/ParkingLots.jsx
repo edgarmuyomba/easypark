@@ -1,7 +1,7 @@
 // display parking lots and delete
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import { useState } from "react";
+
 import BeatLoader from "react-spinners/BeatLoader";
 import { Link } from "react-router-dom";
 
@@ -50,37 +50,37 @@ export default function ParkingLots() {
                             <form action="" method="POST" encType="multipart/form-data">
                                 <div className={styles.input}>
                                     <label htmlFor="image">Image</label>
-                                    <input type="file" id="image" placeholder="Image" />
+                                    <input required type="file" id="image" placeholder="Image" />
                                 </div>
                                 <div className={styles.input}>
                                     <label htmlFor="name">Name</label>
-                                    <input type="text" id="name" placeholder="Name" />
+                                    <input required type="text" id="name" placeholder="Name" />
                                 </div>
                                 <div className={styles.coords}>
                                     <p className={styles.title}>Location</p>
                                     <label htmlFor="lat">Latitude</label>
-                                    <input type="number" id="lat" placeholder="Latititude" />
+                                    <input required type="number" id="lat" placeholder="Latititude" />
                                     <label htmlFor="lon">Longitude</label>
-                                    <input type="number" id="lon" placeholder="Longitude" />
+                                    <input required type="number" id="lon" placeholder="Longitude" />
                                 </div>
                                 <div className={styles.input}>
                                     <label htmlFor="rate">Rate</label>
-                                    <input type="number" id="rate" placeholder="Rate Per Hour" />
+                                    <input required type="number" id="rate" placeholder="Rate Per Hour" />
                                 </div>
                                 <div className={styles.time}>
                                     <p className={styles.title}>Opening and Closing time</p>
                                     <label htmlFor="open">Open</label>
-                                    <input type="time" id="open" placeholder="Open" />
+                                    <input required type="time" id="open" placeholder="Open" />
                                     <label htmlFor="close">Close</label>
-                                    <input type="time" id="close" placeholder="Close" />
+                                    <input required type="time" id="close" placeholder="Close" />
                                 </div>
                                 <div className={styles.input}>
                                     <label htmlFor="noStories">Stories</label>
-                                    <input type="number" id="noStories" placeholder="Number of Stories" />
+                                    <input required type="number" id="noStories" placeholder="Number of Stories" />
                                 </div>
                                 <div className={styles.input}>
                                     <label htmlFor="services">Services</label>
-                                    <input type="text" id="services" placeholder="Services Provided" />
+                                    <input required type="text" id="services" placeholder="Services Provided" />
                                 </div>
                                 <input className={styles.submit} type="submit" value="Create Lot" />
                             </form>
