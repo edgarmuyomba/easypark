@@ -5,6 +5,7 @@ export default async function handleSlotOptionClick(slot, slots, action) {
             result = await park(slot, slots);
             break;
         case "release":
+            result = await release(slot, slots);
             break;
         case "delete":
             break;
@@ -27,12 +28,11 @@ const park = async (slot, slots) => {
         method: "POST"
     };
 
-
     const response = await fetch(`http://localhost:8000/park_in_slot/${slot.parking_lot}/${slot.uuid}/`, options);
     data = await response.json();
     if (response.status === 400) {
         styles = {
-            backgroundColor: 'rgb(255, 130, 107)',
+            backgroundColor: 'rgb(253, 159, 142)',
             color: 'rgb(116, 0, 0)',
             border: '1px solid red',
             borderTop: 'none',
@@ -42,6 +42,39 @@ const park = async (slot, slots) => {
         for (let _slot of slots) {
             if (slot.uuid === _slot.uuid) {
                 _slot.occupied = true;
+            }
+        }
+    }
+
+    return {
+        "message": data.detail,
+        "styles": styles,
+        "slots": slots
+    }
+}
+
+const release = async (slot, slots) => {
+    let data = null;
+    let styles = null;
+
+    const options = {
+        method: "POST"
+    };
+
+    const response = await fetch(`http://localhost:8000/release_slot/${slot.parking_lot}/${slot.uuid}/`, options);
+    data = await response.json();
+    if (response.status === 404) {
+        styles = {
+            backgroundColor: 'rgb(253, 159, 142)',
+            color: 'rgb(116, 0, 0)',
+            border: '1px solid red',
+            borderTop: 'none',
+            fontWeight: 'normal'
+        };
+    } else {
+        for (let _slot of slots) {
+            if (slot.uuid === _slot.uuid) {
+                _slot.occupied = false;
             }
         }
     }

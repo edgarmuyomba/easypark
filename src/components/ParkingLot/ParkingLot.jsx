@@ -49,10 +49,10 @@ export default function ParkingLot() {
 
     function handleMessage(message, _styles) {
         setResponse(message);
-        _styles === null 
-        ? null
-        : setRespstyles(_styles);
-        
+        _styles === null
+            ? null
+            : setRespstyles(_styles);
+
         responseRef.current.className = styles.slideIn;
         responseRef.current.style.top = "0";
         setTimeout(() => {
@@ -151,10 +151,16 @@ export default function ParkingLot() {
                                                                     </p>
                                                                     <div className={option === index ? styles.view : styles.options}>
                                                                         <ul className={styles.list}>
-                                                                            <li className={styles.option} onClick={() => handleClick(slot, "park")}>
+                                                                            <li className={styles.option} onClick={() => {
+                                                                                slot.occupied
+                                                                                    ? null
+                                                                                    : handleClick(slot, "park")
+                                                                            }}>
                                                                                 <p className={styles.text}>Park</p>
                                                                             </li>
-                                                                            <li className={styles.option}>
+                                                                            <li className={styles.option} onClick={() => {
+                                                                                 handleClick(slot, "release")
+                                                                            }}>
                                                                                 <p className={styles.text}>Release</p>
                                                                             </li>
                                                                             <li className={styles.option}>
