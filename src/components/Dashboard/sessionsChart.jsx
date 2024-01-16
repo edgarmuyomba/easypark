@@ -2,7 +2,6 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, AreaChart, Area 
 
 function CustomTooltip({ payload, label, active }) {
     if (active && payload && payload.length) {
-        console.log(payload);
         return (
             <div style={{ backgroundColor: 'white', padding: '0.5rem', border: '1px solid lightgrey'}}>
                 <p style={{ fontSize: '0.9rem', fontWeight: 'bold'}}>

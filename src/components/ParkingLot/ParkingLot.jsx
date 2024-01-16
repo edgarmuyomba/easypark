@@ -66,7 +66,7 @@ export default function ParkingLot() {
 
     (() => {
         // hiding the option block
-        lotsRef !== null
+        lotsRef.current !== null
             ?
             document.onclick = (e) => {
                 let x = e.clientX, y = e.clientY;

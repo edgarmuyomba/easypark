@@ -1,12 +1,15 @@
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Icon from "@mdi/react";
 import { mdiViewDashboard, mdiParking, mdiAvTimer, mdiAccountSettings, mdiSmokeDetectorVariant, mdiChartBox } from "@mdi/js";
 
+import SideContext from '../../Context';
+
 export default function Sidebar() {
-    const [active, setActive] = useState(1);
+    
+    const { active, setActive } = useContext(SideContext);
 
     return (
         <aside className={styles.sidebar}>
