@@ -43,7 +43,8 @@ export default function ParkingLot() {
         let tmp = slots;
         const result = await handleSlotOptionClick(slot, tmp, action);
         setSlots(result.slots);
-        processLevels(number, slots);
+        const _levels = processLevels(number, result.slots);
+        setLevels(_levels);
         handleMessage(result.message, result.styles);
     }
 
@@ -77,8 +78,8 @@ export default function ParkingLot() {
                 const data = await response.json();
                 setDetails(data);
                 setNumber(data.number_of_stories);
-                const levels = processLevels(data.number_of_stories, data.slots);
-                setLevels(levels);
+                const _levels = processLevels(data.number_of_stories, data.slots);
+                setLevels(_levels);
                 setSlots(data.slots);
             } catch (error) {
                 console.log(error);
@@ -159,15 +160,19 @@ export default function ParkingLot() {
                                                                                 <p className={styles.text}>Park</p>
                                                                             </li>
                                                                             <li className={styles.option} onClick={() => {
-                                                                                 handleClick(slot, "release")
+                                                                                slot.occupied
+                                                                                    ? handleClick(slot, "release")
+                                                                                    : null
                                                                             }}>
                                                                                 <p className={styles.text}>Release</p>
                                                                             </li>
                                                                             <li className={styles.option}>
                                                                                 <p className={styles.text}>Edit</p>
                                                                             </li>
-                                                                            <li className={styles.option}>
-                                                                                <p className={styles.text}>Modify</p>
+                                                                            <li className={styles.option} onClick={() => {
+                                                                                handleClick(slot, "destroy")
+                                                                            }}>
+                                                                                <p className={styles.text}>Delete</p>
                                                                             </li>
                                                                         </ul>
                                                                     </div>

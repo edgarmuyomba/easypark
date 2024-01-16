@@ -7,7 +7,8 @@ export default async function handleSlotOptionClick(slot, slots, action) {
         case "release":
             result = await release(slot, slots);
             break;
-        case "delete":
+        case "destroy":
+            result = await destroy(slot, slots);
             break;
         case "edit":
             break;
@@ -77,6 +78,36 @@ const release = async (slot, slots) => {
                 _slot.occupied = false;
             }
         }
+    }
+
+    return {
+        "message": data.detail,
+        "styles": styles,
+        "slots": slots
+    }
+}
+
+const destroy = async (slot, slots) => {
+    let data = null;
+    let styles = null;
+
+    const options = {
+        method: "DELETE"
+    };
+
+    const response = await fetch(`http://localhost:8000/delete_slot/${slot.uuid}/`, options);
+    data = await response.json();
+    if (response.status === 400) {
+        styles = {
+            backgroundColor: 'rgb(253, 159, 142)',
+            color: 'rgb(116, 0, 0)',
+            border: '1px solid red',
+            borderTop: 'none',
+            fontWeight: 'normal'
+        };
+    } else {
+        let index = slots.indexOf(slot);
+        if (index > -1) slots.splice(index, 1);
     }
 
     return {
