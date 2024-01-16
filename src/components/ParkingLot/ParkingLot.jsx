@@ -15,17 +15,19 @@ export default function ParkingLot() {
 
     const [loading, setLoading] = useState(true);
     const [details, setDetails] = useState({});
+    const [number, setNumber] = useState(0);
     const [levels, setLevels] = useState([]);
     const [slots, setSlots] = useState([]);
+    const [option, setOption] = useState(null);
 
     const responseRef = useRef(null);
     const [response, setResponse] = useState('This is a response');
     const [respstyles, setRespstyles] = useState({ backgroundColor: 'rgb(131, 255, 131)', color: 'rgb(0, 58, 0)', border: 'none' });
 
-    const optionsRef = useRef(null);
     const lotsRef = useRef(null);
 
     function processLevels(number, slots) {
+        // organizing the slots in terms of levels
         let results = [];
 
         for (let i = 0; i < number; i++) {
@@ -37,33 +39,33 @@ export default function ParkingLot() {
         return results;
     }
 
-    function handleClick() {
-
+    function handleClick(slot, action) {
+        let tmp = slots;
+        const result = handleSlotOptionClick(slot, tmp, action);
+        setSlots(result.slots);
+        processLevels(number, slots);
     }
 
-    function showOptions(e) {
-        optionsRef.current.style.display = 'block';
-        optionsRef.current.style.top = `${e.clientY}px`;
-        optionsRef.current.style.left = `${e.clientX}px`;
+    function handleMessage(message, styles) {
+        
     }
 
     (() => {
         document.onclick = (e) => {
             let x = e.clientX, y = e.clientY;
             let rect = lotsRef.current.getBoundingClientRect();
-            
-            if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
-                optionsRef.current.style.display = 'none';
-            }
+            if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) setOption(null);
         }
     })();
 
     useEffect(() => {
         const fetchData = async () => {
+            // fetching information details about the lot
             try {
                 const response = await fetch(`http://localhost:8000/parking_lot_details/${uuid}/`);
                 const data = await response.json();
                 setDetails(data);
+                setNumber(data.number_of_stories);
                 const levels = processLevels(data.number_of_stories, data.slots);
                 setLevels(levels);
                 setSlots(data.slots);
@@ -74,9 +76,10 @@ export default function ParkingLot() {
             }
         }
         fetchData();
-    }, [uuid, slots]);
+    }, [uuid]);
 
     function serviceIcon(key) {
+        // icon management for services
         switch (key) {
             case "Security":
                 return (
@@ -99,7 +102,6 @@ export default function ParkingLot() {
         }
     }
 
-
     return (
         <div className={styles.parkingLotDetails}>
             <Navbar />
@@ -120,22 +122,6 @@ export default function ParkingLot() {
                     : (
                         <>
                             <div className={styles.lots} ref={lotsRef}>
-                                <div className={styles.options} ref={optionsRef}>
-                                    <ul className={styles.list}>
-                                        <li className={styles.option}>
-                                            <p className={styles.text}>Park</p>
-                                        </li>
-                                        <li className={styles.option}>
-                                            <p className={styles.text}>Release</p>
-                                        </li>
-                                        <li className={styles.option}>
-                                            <p className={styles.text}>Edit</p>
-                                        </li>
-                                        <li className={styles.option}>
-                                            <p className={styles.text}>Modify</p>
-                                        </li>
-                                    </ul>
-                                </div>
                                 {
                                     levels.map((level, index) => {
                                         return (
@@ -145,10 +131,29 @@ export default function ParkingLot() {
                                                     {
                                                         level.map((slot, index) => {
                                                             return (
-                                                                <div key={index} className={slot.occupied ? styles.slotOccupied : styles.slot} onClick={(e) => showOptions(e)}>
+                                                                <div key={index} className={slot.occupied ? styles.slotOccupied : styles.slot} onClick={() => {
+                                                                    if (option === index) setOption(null);
+                                                                    else setOption(index)
+                                                                }}>
                                                                     <p className={styles.label} style={{ color: slot.occupied ? 'white' : 'rgb(58, 58, 58)' }}>
                                                                         {slot.slot_number}
                                                                     </p>
+                                                                    <div className={option === index ? styles.view : styles.options}>
+                                                                        <ul className={styles.list}>
+                                                                            <li className={styles.option} onClick={() => handleClick(slot, "park")}>
+                                                                                <p className={styles.text}>Park</p>
+                                                                            </li>
+                                                                            <li className={styles.option}>
+                                                                                <p className={styles.text}>Release</p>
+                                                                            </li>
+                                                                            <li className={styles.option}>
+                                                                                <p className={styles.text}>Edit</p>
+                                                                            </li>
+                                                                            <li className={styles.option}>
+                                                                                <p className={styles.text}>Modify</p>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             );
                                                         })

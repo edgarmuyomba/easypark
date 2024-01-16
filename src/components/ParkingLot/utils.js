@@ -42,10 +42,12 @@ const park = async (slot, slots) => {
     } finally {
         for (let _slot of slots) {
             if (slot.uuid === _slot.uuid) {
-                slot.occupied = true;
+                _slot.occupied = true;
             }
         }
     }
+
+    console.log(slots);
 
     return {
         "message": data,

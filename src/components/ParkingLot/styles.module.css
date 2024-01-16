@@ -126,13 +126,16 @@ div.slot,
 div.slotOccupied {
     background-color: whitesmoke;
     height: 100%;
+    overflow: hidden;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 7px;
     display: flex;
-    align-items: end;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
     padding-bottom: 0.5rem;
     cursor: pointer;
+    position: relative;
 }
 
 div.slotOccupied {
@@ -159,6 +162,42 @@ p.lotNumber {
     padding-left: 0.5rem;
     border-left: 3px solid green;
     background-color: whitesmoke;
+}
+
+div.options,
+div.view {
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(99, 99, 99, 0.2);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0.3rem;
+    border-radius: 0 0 3.5px;
+    margin-top: 0.3rem;
+    transform: translateY(110%);
+    position: absolute;
+}
+
+div.view {
+    transform: translateY(8%);
+}
+
+ul.list {
+    list-style-type: none;
+}
+
+li.option {
+    padding: 0.3rem;
+    border-radius: 3.5px;
+}
+
+p.text {
+    font-size: 0.7rem;
+}
+
+li.option:hover {
+    background-color: rgb(180, 180, 180);
+    color: white;
 }
 
 div.response,
@@ -196,33 +235,4 @@ div.slideOut {
     to {
         top: -80px;
     }
-}
-
-div.options {
-    background-color: whitesmoke;
-    position: absolute;
-    width: 150px;
-    cursor: pointer;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    padding: 0.3rem;
-    border-radius: 7px;
-    display: none;
-}
-
-ul.list {
-    list-style-type: none;
-}
-
-li.option {
-    padding: 0.3rem;
-    border-radius: 3.5px;
-}
-
-p.text {
-    font-size: 0.7rem;
-}
-
-li.option:hover {
-    background-color: rgb(180, 180, 180);
-    color: white;
 }
