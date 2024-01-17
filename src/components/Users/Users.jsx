@@ -6,6 +6,7 @@ import Icon from "@mdi/react";
 import { mdiTrashCanOutline, mdiMagnify } from "@mdi/js";
 import ToggleSwitch from "./ToggleSwitch";
 import SideContext from "../../Context";
+import { Link } from "react-router-dom";
 
 export default function Users() {
 
@@ -19,7 +20,7 @@ export default function Users() {
 
     useEffect(() => {
         updateActive(4);
-        
+
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8000/users/");
@@ -57,21 +58,21 @@ export default function Users() {
                 <div className={styles.filterSearch}>
                     <div className={styles.search}>
                         <Icon path={mdiMagnify} size={0.7} color="green" />
-                        <input 
-                            type="text" 
-                            name="search" 
-                            id="" 
+                        <input
+                            type="text"
+                            name="search"
+                            id=""
                             placeholder="Filter by name or email"
                             value={filterText}
                             onChange={(e) => setFilterText(e.target.value)}
-                            autocomplete="off"
-                            />
+                            autoComplete="off"
+                        />
                     </div>
                     <div className={styles.filter}>
                         <p className={styles.text}>Only show active users</p>
                         <ToggleSwitch
                             checked={active}
-                            onChange={() => setActive((active) => !active)} 
+                            onChange={() => setActive((active) => !active)}
                         />
                     </div>
                 </div>
@@ -90,22 +91,24 @@ export default function Users() {
                                 // perform name filtering here
                                 return (
                                     <div key={index} className={styles.user}>
-                                        <ul className={styles.fields}>
-                                            <li className={styles.field}>Name</li>
-                                            <li className={styles.field}>Email</li>
-                                            <li className={styles.field}>{userLastActivity(user)}</li>
-                                            <li className={styles.field}>
-                                                <div className={styles.actions}>
-                                                    <div className={styles.active}>
-                                                        <div className={styles.yes}>Yes</div>
-                                                        <div className={styles.no}>No</div>
+                                        <Link to={`/user/${user.user_id}`}>
+                                            <ul className={styles.fields}>
+                                                <li className={styles.field}>Name</li>
+                                                <li className={styles.field}>Email</li>
+                                                <li className={styles.field}>{userLastActivity(user)}</li>
+                                                <li className={styles.field}>
+                                                    <div className={styles.actions}>
+                                                        <div className={styles.active}>
+                                                            <div className={styles.yes}>Yes</div>
+                                                            <div className={styles.no}>No</div>
+                                                        </div>
+                                                        <div className={styles.delete}>
+                                                            <Icon className={styles.delete} path={mdiTrashCanOutline} size={0.7} />
+                                                        </div>
                                                     </div>
-                                                    <div className={styles.delete}>
-                                                        <Icon className={styles.delete} path={mdiTrashCanOutline} size={0.7} />
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                                </li>
+                                            </ul>
+                                        </Link>
                                     </div>
                                 )
                             })

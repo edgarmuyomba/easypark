@@ -72,7 +72,6 @@ ul.titles {
 div.user {
     padding: 0.7rem 1.5rem;
     border-bottom: 1px solid whitesmoke;
-    color: rgb(21, 31, 44);
     font-size: 0.75rem;
     cursor: pointer;
 }
@@ -80,6 +79,11 @@ div.user {
 div.user:hover {
     background-color: rgba(21, 31, 44, 0.26);
     color: whitesmoke;
+}
+
+div.user > a {
+    text-decoration: none;
+    color: rgb(21, 31, 44);
 }
 
 ul.fields {

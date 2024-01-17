@@ -1,0 +1,125 @@
+div.user,
+div.loading {
+    height: 100vh;
+    width: 100vw;
+}
+
+div.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.user {
+    display: grid;
+    grid-template-columns: 1fr 4.5fr;
+    grid-template-rows: 300px auto;
+}
+
+div.header {
+    grid-area: 1 / 1 / 2 / -1;
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/header.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+div.details {
+    grid-area: 2 / 1 / 3 / 2;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+div.image {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    background-image: url('../../assets/profile2.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: -4rem;
+    left: 3.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+div.bio {
+    margin-top: 4rem;
+}
+
+div.text {
+    /* border: 1px solid whitesmoke;
+    border-radius: 5px; */
+    padding: 0.5rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+div.text > svg {
+    color: grey;
+}
+
+p.name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: grey;
+    text-transform: uppercase;
+}
+
+p.email,
+p.location,
+p.activity {
+    font-size: 0.8rem;
+}
+
+div.sessions {
+    height: 90%;
+    width: 98%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    align-self: center;
+    border-left: 1px solid grey;
+    padding: 0.5rem;
+    display: grid;
+    gap: 0.3rem;
+    grid-template-rows: 50px repeat(auto-fit, 90px);
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-auto-flow: column;
+}
+
+div.seshHeader {
+    grid-area: 1 / 1 / 2 / -1;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: whitesmoke;
+    font-size: 0.8rem;
+}
+
+div.session {
+    background-color: rgb(255, 223, 228);
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+p.slotNo {
+    font-size: 0.7rem;
+    font-size: bold;
+}
+
+p.time {
+    color: red;
+    font-size: 0.7rem;
+}
+
+p.amount {
+    font-size: 0.7rem;
+    color: rgb(0, 122, 0);
+}
