@@ -18,27 +18,53 @@ export default function Sensors() {
 
     const [loading, setLoading] = useState(true);
     const [sensors, setSensors] = useState([]);
+    const [pages, setPages] = useState([]);
+    const [page, setPage] = useState({ number: 1, page_size: 33 });
     const [sideOpen, setSideOpen] = useState(false);
     const [details, setDetails] = useState(null);
     const [id, setId] = useState(-1);
 
     const sideRef = useRef(null);
 
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch(`${baseUrl}/sensors/?page=${page.number}&page_size=${page.page_size}`);
+            const data = await response.json();
+            setSensors(data.results);
+            setupPages(data.count);
+        } catch (error) {
+            console.log("Error fetching sensors", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const setupPages = (count) => {
+        let result = [];
+        let _full = Math.floor(count / 33), _half = count / 33;
+        _full = _full + Math.ceil(_half - _full);
+        for (let i = 1; i <= _full; i++) {
+            result.push({
+                number: i,
+                page_size: 33,
+            })
+        }
+        setPages(result);
+    }
+
+    const changePage = (pg) => {
+        setPage(pg);
+    }
+
+    useEffect(() => {
+        fetchData();
+        setSideOpen(false);
+    }, [page])
+
     useEffect(() => {
 
         updateActive(5);
-
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`${baseUrl}/sensors/`);
-                const data = await response.json();
-                setSensors(data);
-            } catch (error) {
-                console.log("Error fetching sensors", error);
-            } finally {
-                setLoading(false);
-            }
-        }
 
         fetchData();
 
@@ -117,6 +143,29 @@ export default function Sensors() {
                         })
                     }
                 </div>
+                {
+                    sideOpen
+                        ? null
+                        : (
+                            <div className={styles.pageContainer}>
+                                <div className={styles.pagination}>
+                                    {
+                                        pages.map((_page, index) => {
+                                            return (
+                                                <div key={index} className={index + 1 === page.number ? styles.activePage : styles.page} onClick={() => {
+                                                    index + 1 === page.number
+                                                        ? null
+                                                        : changePage(_page);
+                                                }}>
+                                                    {_page.number}
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        )
+                }
                 <aside className={styles.side} ref={sideRef}>
                     {
                         !details
