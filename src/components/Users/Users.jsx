@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import styles from "./styles.module.css";
 import BeatLoader from "react-spinners/BeatLoader";
 import Icon from "@mdi/react";
 import { mdiTrashCanOutline, mdiMagnify } from "@mdi/js";
 import ToggleSwitch from "./ToggleSwitch";
+import SideContext from "../../Context";
 
 export default function Users() {
+
+    const { updateActive } = useContext(SideContext);
 
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -15,6 +18,8 @@ export default function Users() {
     const [active, setActive] = useState(false);
 
     useEffect(() => {
+        updateActive(4);
+        
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8000/users/");

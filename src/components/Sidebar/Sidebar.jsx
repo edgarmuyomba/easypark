@@ -9,7 +9,7 @@ import SideContext from '../../Context';
 
 export default function Sidebar() {
     
-    const { active, setActive } = useContext(SideContext);
+    const { active, updateActive } = useContext(SideContext);
 
     return (
         <aside className={styles.sidebar}>

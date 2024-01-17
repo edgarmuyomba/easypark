@@ -1,9 +1,12 @@
 import BeatLoader from "react-spinners/BeatLoader";
 import styles from "./styles.module.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import SideContext from "../../Context";
 
 export default function Sessions() {
+
+    const { updateActive } = useContext(SideContext);
 
     const [loading, setLoading] = useState(true);
     const [sessions, setSessions] = useState({});
@@ -25,6 +28,8 @@ export default function Sessions() {
     }
 
     useEffect(() => {
+        updateActive(3);
+        
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8000/parking_sessions/");

@@ -12,7 +12,7 @@ function App() {
   const [active, setActive] = useState(1);
 
   return (
-    <SideContext.Provider value={{ active, setActive }} >
+    <SideContext.Provider value={{ active: active, updateActive: setActive }} >
       <Navbar />
       <Sidebar />
       <Main>

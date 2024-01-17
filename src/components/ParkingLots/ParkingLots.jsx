@@ -1,16 +1,21 @@
 // display parking lots and delete
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./styles.module.css";
 
 import BeatLoader from "react-spinners/BeatLoader";
 import { Link } from "react-router-dom";
+import SideContext from "../../Context";
 
 export default function ParkingLots() {
+
+    const { updateActive } = useContext(SideContext);
 
     const [loading, setLoading] = useState(true);
     const [lots, setLots] = useState([]);
 
     useEffect(() => {
+        updateActive(2);
+
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8000/parking_lots/");

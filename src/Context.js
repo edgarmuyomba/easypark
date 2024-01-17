@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const SideContext = createContext({
     active: '',
-    setActive: '',
+    updateActive: '',
 });
 
 export default SideContext;

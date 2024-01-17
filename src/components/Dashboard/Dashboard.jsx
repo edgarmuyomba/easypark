@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import SessionsChart from "./sessionsChart";
 
 import styles from "./styles.module.css";
@@ -8,7 +8,11 @@ import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiAccountMultiple, mdiSmokeDetectorVariant, mdiCash, mdiPercentBoxOutline, mdiAvTimer, mdiParking, mdiHelpCircleOutline, mdiMenuUp, mdiMapMarkerOutline, mdiChevronDoubleRight } from "@mdi/js";
 
+import SideContext from '../../Context';
+
 export default function Dashboard() {
+    const { updateActive } = useContext(SideContext);
+
     const [loading, setLoading] = useState(true);
 
     const [users, setUsers] = useState("0");
@@ -19,6 +23,9 @@ export default function Dashboard() {
     const [parkingLots, setParkingLots] = useState([]);
 
     useEffect(() => {
+
+        updateActive(1);
+
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:8000/dashboard/');
