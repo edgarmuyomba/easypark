@@ -19,7 +19,8 @@ export default function Sensors() {
     const [loading, setLoading] = useState(true);
     const [sensors, setSensors] = useState([]);
     const [sideOpen, setSideOpen] = useState(false);
-    const [details, setDetails] = useState(true);
+    const [details, setDetails] = useState(null);
+    const [id, setId] = useState(-1);
 
     const sideRef = useRef(null);
 
@@ -43,16 +44,42 @@ export default function Sensors() {
 
     }, []);
 
-    function toggleSide() {
-        const _class = sideRef.current.className;
-        if (_class === styles.side || _class === styles.slideOut) {
-            sideRef.current.className = styles.slideIn;
-            sideRef.current.style.right = "0";
-        } else {
+    function toggleSide(sensor) {
+        if (sideOpen && id !== sensor.id) {
+            fetchDetails(sensor);
+            setId(sensor.id);
+        } else if (sideOpen && id === sensor.id) {
+            setSideOpen(false);
             sideRef.current.className = styles.slideOut;
             sideRef.current.style.right = "-300px";
+        } else if (!sideOpen) {
+            setSideOpen(true);
+            setId(sensor.id);
+            sideRef.current.className = styles.slideIn;
+            sideRef.current.style.right = "0";
+            fetchDetails(sensor);
         }
-        setSideOpen((prev) => !prev);
+    }
+
+    async function fetchDetails(sensor) {
+        let result = {};
+
+        try {
+            const response = await fetch(`${baseUrl}/parking_lot_details/${sensor.parking_lot}/`);
+            const data = await response.json();
+
+            result.name = data.name;
+            for (let slot of data.slots) {
+                if (slot.uuid === sensor.slot) {
+                    result.slot = slot.slot_number;
+                    result.occupied = slot.occupied;
+                }
+            }
+        } catch (error) {
+            console.log("Failed to fetch sensor details", error);
+        } finally {
+            setDetails({ ...result });
+        }
     }
 
     if (loading) {
@@ -72,7 +99,7 @@ export default function Sensors() {
                     {
                         sensors.map((sense, index) => {
                             return (
-                                <div key={index} className={styles.sensor} onClick={() => toggleSide()}>
+                                <div key={index} className={styles.sensor} onClick={() => toggleSide(sense)}>
                                     <div className={styles.icon}>
                                         <img src={sensorIcon} alt="" />
                                     </div>
@@ -90,39 +117,35 @@ export default function Sensors() {
                         })
                     }
                 </div>
-                {
-                    // sideOpen
-                    //     ? (
-                    <aside className={styles.side} ref={sideRef}>
-                        {
-                            !details
-                                ? (
-                                    <div className={styles.loading}>
-                                        <ScaleLoader
-                                            color="whitesmoke"
-                                            loading={!details}
-                                            cssOverride={{
-                                                width: "1.5rem"
-                                            }}
+                <aside className={styles.side} ref={sideRef}>
+                    {
+                        !details
+                            ? (
+                                <div className={styles.loading}>
+                                    <ScaleLoader
+                                        color="whitesmoke"
+                                        loading={!details}
+                                        cssOverride={{
+                                            width: "1.5rem"
+                                        }}
+                                    />
+                                </div>
+                            )
+                            : (
+                                <>
+                                    <div className={styles.lot}>{details.name}</div>
+                                    <div className={styles.slotNo}>{details.slot}</div>
+                                    <div className={styles.occupied}>
+                                        {/* mark the slot as occupied or not */}
+                                        <ToggleSwitch
+                                            checked={details.occupied === true}
                                         />
+                                        <p className={styles.text}>Slot is occupied</p>
                                     </div>
-                                )
-                                : (
-                                    <>
-                                        <div className={styles.lot}>Acacia Mall</div>
-                                        <div className={styles.slotNo}>LV_22</div>
-                                        <div className={styles.occupied}>
-                                            {/* mark the slot as occupied or not */}
-                                            <ToggleSwitch />
-                                            <p className={styles.text}>Slot is occupied</p>
-                                        </div>
-                                    </>
-                                )
-                        }
-                    </aside>
-                    // )
-                    // : null
-                }
+                                </>
+                            )
+                    }
+                </aside>
             </div>
         )
     }

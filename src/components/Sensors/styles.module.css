@@ -149,6 +149,10 @@ aside.slideOut {
     }
 }
 
+div.lot {
+    text-align: center;
+}
+
 div.slotNo {
     font-size: 0.75rem;
 }
