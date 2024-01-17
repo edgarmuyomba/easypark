@@ -6,6 +6,8 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { Link } from "react-router-dom";
 import SideContext from "../../Context";
 
+import baseUrl from "../../serverUrl";
+
 export default function ParkingLots() {
 
     const { updateActive } = useContext(SideContext);
@@ -18,7 +20,7 @@ export default function ParkingLots() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8000/parking_lots/");
+                const response = await fetch(`${baseUrl}/parking_lots/`);
                 const data = await response.json();
                 setLots(data);
             } catch (error) {

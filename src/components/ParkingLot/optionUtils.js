@@ -29,7 +29,7 @@ const park = async (slot, slots) => {
         method: "POST"
     };
 
-    const response = await fetch(`http://localhost:8000/park_in_slot/${slot.parking_lot}/${slot.uuid}/`, options);
+    const response = await fetch(`${baseUrl}/park_in_slot/${slot.parking_lot}/${slot.uuid}/`, options);
     data = await response.json();
     if (response.status === 400) {
         styles = {
@@ -62,7 +62,7 @@ const release = async (slot, slots) => {
         method: "POST"
     };
 
-    const response = await fetch(`http://localhost:8000/release_slot/${slot.parking_lot}/${slot.uuid}/`, options);
+    const response = await fetch(`${baseUrl}/release_slot/${slot.parking_lot}/${slot.uuid}/`, options);
     data = await response.json();
     if (response.status === 404) {
         styles = {
@@ -95,7 +95,7 @@ const destroy = async (slot, slots) => {
         method: "DELETE"
     };
 
-    const response = await fetch(`http://localhost:8000/delete_slot/${slot.uuid}/`, options);
+    const response = await fetch(`${baseUrl}/delete_slot/${slot.uuid}/`, options);
     data = await response.json();
     if (response.status === 400) {
         styles = {

@@ -4,9 +4,11 @@ import styles from "./styles.module.css";
 import BeatLoader from "react-spinners/BeatLoader";
 import Icon from "@mdi/react";
 import { mdiTrashCanOutline, mdiMagnify } from "@mdi/js";
-import ToggleSwitch from "./ToggleSwitch";
-import SideContext from "../../Context";
+import ToggleSwitch from "../Toggleswitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+
+import SideContext from "../../Context";
+import baseUrl from "../../serverUrl";
 
 export default function Users() {
 
@@ -23,7 +25,7 @@ export default function Users() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8000/users/");
+                const response = await fetch(`${baseUrl}/users/`);
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {

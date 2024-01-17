@@ -9,6 +9,7 @@ import Icon from "@mdi/react";
 import { mdiAccountMultiple, mdiSmokeDetectorVariant, mdiCash, mdiPercentBoxOutline, mdiAvTimer, mdiParking, mdiHelpCircleOutline, mdiMenuUp, mdiMapMarkerOutline, mdiChevronDoubleRight } from "@mdi/js";
 
 import SideContext from '../../Context';
+import baseUrl from "../../serverUrl";
 
 export default function Dashboard() {
     const { updateActive } = useContext(SideContext);
@@ -28,7 +29,7 @@ export default function Dashboard() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/dashboard/');
+                const response = await fetch(`${baseUrl}/dashboard/`);
                 const data = await response.json();
                 setUsers(data.no_users);
                 setSensors(data.no_sensors);

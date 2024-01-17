@@ -1,4 +1,165 @@
-div.sensors {
+div.sensors,
+div.loading {
     height: 100%;
     width: 100%;
+}
+
+div.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.container,
+div.tabOpen {
+    display: grid;
+    align-items: start;
+    grid-template-columns: 1fr;
+    justify-content: start;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+div.tabOpen {
+    grid-template-columns: calc(100% - 250px) 250px;
+}
+
+div.sensors {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 130px));
+    grid-template-rows: repeat(auto-fit, 220px);
+}
+
+div.sensor {
+    border-radius: 5px;
+    height: 220px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgrey;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+div.sensor:hover {
+    background-color: rgba(21, 31, 44, 0.726);
+}
+
+div.sensor:hover p.id {
+    color: white;
+}
+
+div.icon > img {
+    height: 40px;
+}
+
+p.id {
+    margin-top: 1.5rem;
+    font-weight: bold;
+}
+
+div.actions {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+div.edit,
+div.delete {
+    background-color: whitesmoke;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+div.edit {
+    color: green;
+}
+
+div.edit:hover {
+    background-color: rgb(123, 204, 123);
+    border: 1px solid rgb(123, 204, 123);
+    color: whitesmoke;
+}
+
+div.delete {
+    color: tomato;
+}
+
+div.delete:hover {
+    background-color: tomato;
+    border: 1px solid tomato;
+    color: whitesmoke;
+}
+
+/* side styles */
+
+aside.side,
+aside.slideIn,
+aside.slideOut {
+    height: 100%;
+    width: 250px;
+    background-color:  rgba(21, 31, 44, 0.87);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    position: absolute;
+    right: -300px;
+}
+
+aside.slideIn {
+    animation: slideIn 0.3s ease-in-out alternate;
+}
+
+aside.slideOut {
+    animation: slideOut 0.15s ease-in-out alternate;
+}
+
+@keyframes slideIn {
+    from {
+        right: -300px;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -300px;
+    }
+}
+
+div.slotNo {
+    font-size: 0.75rem;
+}
+
+div.occupied {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.text {
+    font-size: 0.75rem;
+    color: whitesmoke;
 }

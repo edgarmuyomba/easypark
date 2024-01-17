@@ -4,6 +4,8 @@ import styles from "./styles.module.css";
 import { useState, useEffect, useContext } from "react";
 import SideContext from "../../Context";
 
+import baseUrl from "../../serverUrl";
+
 export default function Sessions() {
 
     const { updateActive } = useContext(SideContext);
@@ -32,7 +34,7 @@ export default function Sessions() {
         
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8000/parking_sessions/");
+                const response = await fetch(`${baseUrl}/parking_sessions/`);
                 const data = await response.json();
                 let sesh = processSessions(data);
                 setSessions(sesh);

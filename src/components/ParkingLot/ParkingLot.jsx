@@ -10,6 +10,8 @@ import BeatLoader from "react-spinners/BeatLoader"
 
 import handleSlotOptionClick from "./optionUtils.js";
 
+import baseUrl from "../../serverUrl.js";
+
 export default function ParkingLot() {
     const { uuid } = useParams();
 
@@ -80,7 +82,7 @@ export default function ParkingLot() {
         const fetchData = async () => {
             // fetching information details about the lot
             try {
-                const response = await fetch(`http://localhost:8000/parking_lot_details/${uuid}/`);
+                const response = await fetch(`${baseUrl}/parking_lot_details/${uuid}/`);
                 const data = await response.json();
                 setDetails(data);
                 setNumber(data.number_of_stories);
