@@ -1,4 +1,138 @@
-div.users {
+div.users,
+div.loading {
     height: 100%;
     width: 100%;
+}
+
+div.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.filterSearch {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+div.search {
+    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    width: 60%;
+    gap: 0.5rem;
+    border-radius: 5px;
+}
+
+div.search > input {
+    height: 90%;
+    width: 90%;
+    border: none;
+    border-radius: 0;
+    font-size: 0.8rem;
+}
+
+div.search > input:focus {
+    outline: none;
+}
+
+div.filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+div.filter > p.text {
+    font-size: 0.7rem;
+}
+
+div.table {
+    width: 100%;
+}
+
+div.header {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    padding: 0.5rem 1.5rem;
+    background-color: rgb(36, 53, 75);
+}
+
+ul.titles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+    color: white;
+    font-size: 0.9rem;
+}
+
+div.user {
+    padding: 0.7rem 1.5rem;
+    border-bottom: 1px solid whitesmoke;
+    color: rgb(21, 31, 44);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+div.user:hover {
+    background-color: rgba(21, 31, 44, 0.26);
+    color: whitesmoke;
+}
+
+ul.fields {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+}
+
+div.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+div.active {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+div.yes,
+div.no {
+    padding: 0.3rem;
+    border: 1px solid lightgrey;
+    font-size: 0.7rem;
+}
+
+div.yes {
+    border-radius: 5px 0 0 5px;
+    background-color: green;
+    color: white;
+}
+
+div.no {
+    border-radius: 0 5px 5px 0;
+    color: red;
+}
+
+div.no:hover {
+    background-color: red;
+    color: white;
+}
+
+div.delete {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 0.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.delete:hover {
+    border: 1px solid tomato;
+    color: tomato;
 }

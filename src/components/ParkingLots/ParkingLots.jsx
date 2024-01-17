@@ -43,7 +43,7 @@ export default function ParkingLots() {
                         New Lot
                     </button>
                 </div>
-                <div className={styles.registerCont}>
+                {/* <div className={styles.registerCont}>
                     <div className={styles.registerLot}>
                         <p className={styles.header}>Register a new parking lot</p>
                         <div className={styles.form}>
@@ -86,7 +86,7 @@ export default function ParkingLots() {
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {
                     lots.map((lot, index) => {
                         return (
