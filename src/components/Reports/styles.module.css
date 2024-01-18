@@ -27,19 +27,54 @@ select.types {
     background-color: transparent;
 }
 
-div.filter {
+/* filter styles */
+
+div.filter,
+div.focus {
     width: 300px;
+    position: relative;
 }
 
-div.filter > input {
+div.filter > input,
+div.focus > input {
     border: none;
     border-radius: 0;
     width: 100%;
 }
 
 select.types:focus,
-div.filter > input:focus {
+div.filter > input:focus,
+div.focus > input:focus {
     outline: none;
+}
+
+div.focus {
+    border: 1px solid lightseagreen;
+    border-bottom: none;
+}
+
+div.results {
+    position: absolute;
+    background-color: white;
+    width: 300px;
+    left: 0;
+    border: 1px solid lightseagreen;
+    border-top: none;
+    border-radius: 0 0 7px 7px;
+    display: none;
+}
+
+div.result {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid whitesmoke;
+    cursor: pointer;
+    font-size: 0.7rem;
+    color: rgb(77, 77, 77);
+}
+
+div.result:hover {
+    background-color: lightseagreen;
+    color: white;
 }
 
 div.body {
@@ -170,6 +205,7 @@ div.not_ready {
     padding: 0.05rem 0;
     border-radius: 5px;
     color: white;
+    font-size: 0.75rem;
 }
 
 div.loading {
@@ -205,4 +241,24 @@ div.col_header {
 
 section.duration > p.title {
     margin-bottom: 0.5rem;
+}
+
+/* no display */
+div.noDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    grid-area: 1 / 1 / -1 / -1;
+}
+
+div.noDisplay > img {
+    height: 10rem;
+}
+
+p.help {
+    font-weight: bold;
+    font-size: 0.8rem;
 }
