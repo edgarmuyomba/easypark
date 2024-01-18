@@ -5,6 +5,7 @@ div.reports {
 
 div.header {
     width: 100%;
+    height: 7%;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -41,3 +42,172 @@ div.filter > input:focus {
     outline: none;
 }
 
+div.body {
+    border: 1px solid lightgray;
+    margin-top: 0.5rem;
+    height: 93%;
+    display: flex;
+}
+
+div.head {
+    display: grid;
+    grid-template-columns: 1.2fr 8fr;
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    color: rgb(39, 39, 39);
+    font-weight: bold;
+    background-color: whitesmoke;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    height: 7%;
+}
+
+div.titles {
+    width: 25%;
+    height: 100%;
+}
+
+ul.list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    background-color: whitesmoke;
+    height: 93%;
+}
+
+li.title,
+li.display {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    font-size: 0.75rem;
+    color: rgb(39, 39, 39);
+    display: grid;
+    grid-template-columns: 1.2fr 8fr;
+    cursor: pointer;
+}
+
+li.title > p:first-child {
+    color: rgb(83, 83, 83);
+    font-size: 0.7rem;
+}
+
+li.title:hover {
+    background-color: lightgray;
+}
+
+li.display {
+    background-color: lightgray;
+    border-left: 2px solid rgb(0, 107, 173);
+}
+
+/* format styles */
+div.format {
+    width: 100%;
+}
+
+div.title {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    gap: 0.5rem;
+}
+
+div.title > p {
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+div.title > p.index {
+    color: lightgray;
+}
+
+div.actions {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+div.action {
+    background-color: rgb(34, 53, 78);
+    padding: 0.3rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+}
+
+div.info {
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 2fr;
+    font-size: 0.85rem;
+}
+
+div.tile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0.4rem;
+}
+
+p.type {
+    color: darkslategray;
+}
+
+div.ready,
+div.loading,
+div.not_ready {
+    background-color: green;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.05rem 0;
+    border-radius: 5px;
+    color: white;
+}
+
+div.loading {
+    background-color: orange;
+}
+
+div.not_ready {
+    background-color: tomato;
+}
+
+p.title {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+section.col_headers > p.title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+div.column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0.4rem;
+}
+
+div.col_header {
+    background-color: lightslategray;
+    width: 100px;
+    padding: 0.2rem;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+section.duration > p.title {
+    margin-bottom: 0.5rem;
+}
