@@ -101,7 +101,12 @@ export default function Reports() {
                                 ? (
                                     filtered.map((item, index) => {
                                         return (
-                                            <div key={index} className={styles.result} onClick={() => setDisplay({ id: item.index, value: item.value })}>
+                                            <div key={index} className={styles.result} onClick={() => { 
+                                                filterRef.current.className = styles.filter;
+                                                resultsRef.current.style.display = "none";
+                                                setDisplay({ id: item.index, value: item.value })
+                                            }
+                                                }>
                                                 <p className={styles.text}>{item.value}</p>
                                             </div>
                                         )
