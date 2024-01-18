@@ -2,3 +2,42 @@ div.reports {
     height: 100%;
     width: 100%;
 }
+
+div.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+}
+
+label {
+    color: black;
+    font-size: 0.65rem;
+    margin-right: 0.2rem;
+}
+
+select.types {
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    background-color: transparent;
+}
+
+div.filter {
+    width: 300px;
+}
+
+div.filter > input {
+    border: none;
+    border-radius: 0;
+    width: 100%;
+}
+
+select.types:focus,
+div.filter > input:focus {
+    outline: none;
+}
+

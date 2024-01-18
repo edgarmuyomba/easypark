@@ -35,7 +35,7 @@ export default function Users() {
             }
         }
         fetchData();
-    })
+    }, [])
 
     function userLastActivity(user) {
         let activity = user.sessions[0];
