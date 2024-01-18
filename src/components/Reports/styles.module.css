@@ -197,14 +197,9 @@ div.column {
 }
 
 div.col_header {
-    background-color: lightslategray;
-    width: 100px;
     padding: 0.2rem;
     border-radius: 5px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: black;
     font-size: 0.7rem;
 }
 
