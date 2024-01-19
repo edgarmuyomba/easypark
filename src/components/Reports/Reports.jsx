@@ -126,7 +126,7 @@ export default function Reports() {
                         {
                             titles.map((title, index) => {
                                 return (
-                                    <li key={index} className={display !== null && title === display.value ? styles.display : styles.title} onClick={() => setDisplay({ id: title.index, value: title.value })}>
+                                    <li key={index} className={display !== null && title.value === display.value ? styles.display : styles.title} onClick={() => setDisplay({ id: title.index, value: title.value })}>
                                         <p>{title.index}</p>
                                         <p>{title.value}</p>
                                     </li>

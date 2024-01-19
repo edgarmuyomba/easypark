@@ -1,267 +1,562 @@
 {
-    "reports": {
-        "all": [
-            {
-                "report": "Occupancy Trends",
-                "category": "Parking Lots",
-                "columns": [
-                  {"header": "Date", "description": "Date of the report"},
-                  {"header": "Occupancy Rate", "description": "Percentage of parking spaces in use"},
-                  {"header": "Total Spaces", "description": "Total number of parking spaces"}
-                ]
-              },
-              {
-                "report": "Revenue Analysis",
-                "category": "Parking Lots",
-                "columns": [
-                  {"header": "Date", "description": "Date of the report"},
-                  {"header": "Income", "description": "Total income generated"},
-                  {"header": "Transaction Count", "description": "Number of payment transactions"}
-                ]
-              },
-              {
-                "report": "Time Analysis",
-                "category": "Parking Lots",
-                "columns": [
-                  {"header": "Date", "description": "Date of the report"},
-                  {"header": "Average Session Time", "description": "Average duration of parking sessions"},
-                  {"header": "Peak Hours", "description": "Busiest hours of the day"}
-                ]
-              },
-              {
-                "report": "Maintenance Needs",
-                "category": "Parking Lots",
-                "columns": [
-                  {"header": "Date", "description": "Date of the report"},
-                  {"header": "Maintenance Requests", "description": "Number of maintenance requests"},
-                  {"header": "Critical Issues", "description": "Number of critical issues"}
-                ]
-              },
-              {
-                "report": "Usage Patterns",
-                "category": "Sessions",
-                "columns": [
-                  {"header": "Session ID", "description": "Unique identifier for the session"},
-                  {"header": "User ID", "description": "ID of the user associated with the session"},
-                  {"header": "Start Time", "description": "Time when the session started"}
-                ]
-              },
-              {
-                "report": "Peak Usage Hours",
-                "category": "Sessions",
-                "columns": [
-                  {"header": "Hour", "description": "Specific hour of the day"},
-                  {"header": "Total Sessions", "description": "Number of sessions during that hour"},
-                  {"header": "Average Duration", "description": "Average duration of sessions in that hour"}
-                ]
-              },
-              {
-                "report": "Session Duration",
-                "category": "Sessions",
-                "columns": [
-                  {"header": "Session ID", "description": "Unique identifier for the session"},
-                  {"header": "Duration", "description": "Duration of the session in minutes"},
-                  {"header": "User Feedback", "description": "Feedback provided by the user after the session"}
-                ]
-              },
-              {
-                "report": "Session Distribution",
-                "category": "Sessions",
-                "columns": [
-                  {"header": "Date", "description": "Date of the report"},
-                  {"header": "Total Sessions", "description": "Number of sessions on that date"},
-                  {"header": "Busiest Location", "description": "Location with the highest session count"}
-                ]
-              },
-              {
-                "report": "User Activity",
-                "category": "Users",
-                "columns": [
-                  {"header": "User ID", "description": "Unique identifier for the user"},
-                  {"header": "Activity Type", "description": "Type of activity performed by the user"},
-                  {"header": "Timestamp", "description": "Time when the activity occurred"}
-                ]
-              },
-              {
-                "report": "Access Patterns",
-                "category": "Users",
-                "columns": [
-                  {"header": "User ID", "description": "Unique identifier for the user"},
-                  {"header": "Location", "description": "Parking lot or area accessed by the user"},
-                  {"header": "Access Time", "description": "Time when the access occurred"}
-                ]
-              },
-              {
-                "report": "User Engagement",
-                "category": "Users",
-                "columns": [
-                  {"header": "User ID", "description": "Unique identifier for the user"},
-                  {"header": "Engagement Level", "description": "Level of engagement based on user interactions"},
-                  {"header": "Last Login", "description": "Timestamp of the user's last login"}
-                ]
-              },
-              {
-                "report": "Health and Status",
-                "category": "Sensors",
-                "columns": [
-                  {"header": "Sensor ID", "description": "Unique identifier for the sensor"},
-                  {"header": "Status", "description": "Current operational status of the sensor"},
-                  {"header": "Health Score", "description": "Health score indicating the condition of the sensor"}
-                ]
-              },
-              {
-                "report": "Maintenance Requirements",
-                "category": "Sensors",
-                "columns": [
-                  {"header": "Sensor ID", "description": "Unique identifier for the sensor"},
-                  {"header": "Maintenance Type", "description": "Type of maintenance required"},
-                  {"header": "Scheduled Maintenance", "description": "Date for scheduled maintenance"}
-                ]
-              },
-              {
-                "report": "Alert History",
-                "category": "Sensors",
-                "columns": [
-                  {"header": "Sensor ID", "description": "Unique identifier for the sensor"},
-                  {"header": "Alert Type", "description": "Type of alert triggered by the sensor"},
-                  {"header": "Alert Timestamp", "description": "Time when the alert occurred"}
-                ]
-              }
-        ],
-      "parking_lots": [
-        {
-          "report": "Occupancy Trends",
-          "category": "Parking Lots",
-          "columns": [
-            {"header": "Date", "description": "Date of the report"},
-            {"header": "Occupancy Rate", "description": "Percentage of parking spaces in use"},
-            {"header": "Total Spaces", "description": "Total number of parking spaces"}
-          ]
-        },
-        {
-          "report": "Revenue Analysis",
-          "category": "Parking Lots",
-          "columns": [
-            {"header": "Date", "description": "Date of the report"},
-            {"header": "Income", "description": "Total income generated"},
-            {"header": "Transaction Count", "description": "Number of payment transactions"}
-          ]
-        },
-        {
-          "report": "Time Analysis",
-          "category": "Parking Lots",
-          "columns": [
-            {"header": "Date", "description": "Date of the report"},
-            {"header": "Average Session Time", "description": "Average duration of parking sessions"},
-            {"header": "Peak Hours", "description": "Busiest hours of the day"}
-          ]
-        },
-        {
-          "report": "Maintenance Needs",
-          "category": "Parking Lots",
-          "columns": [
-            {"header": "Date", "description": "Date of the report"},
-            {"header": "Maintenance Requests", "description": "Number of maintenance requests"},
-            {"header": "Critical Issues", "description": "Number of critical issues"}
-          ]
-        }
-      ],
-      "sessions": [
-        {
-          "report": "Usage Patterns",
-          "category": "Sessions",
-          "columns": [
-            {"header": "Session ID", "description": "Unique identifier for the session"},
-            {"header": "User ID", "description": "ID of the user associated with the session"},
-            {"header": "Start Time", "description": "Time when the session started"}
-          ]
-        },
-        {
-          "report": "Peak Usage Hours",
-          "category": "Sessions",
-          "columns": [
-            {"header": "Hour", "description": "Specific hour of the day"},
-            {"header": "Total Sessions", "description": "Number of sessions during that hour"},
-            {"header": "Average Duration", "description": "Average duration of sessions in that hour"}
-          ]
-        },
-        {
-          "report": "Session Duration",
-          "category": "Sessions",
-          "columns": [
-            {"header": "Session ID", "description": "Unique identifier for the session"},
-            {"header": "Duration", "description": "Duration of the session in minutes"},
-            {"header": "User Feedback", "description": "Feedback provided by the user after the session"}
-          ]
-        },
-        {
-          "report": "Session Distribution",
-          "category": "Sessions",
-          "columns": [
-            {"header": "Date", "description": "Date of the report"},
-            {"header": "Total Sessions", "description": "Number of sessions on that date"},
-            {"header": "Busiest Location", "description": "Location with the highest session count"}
-          ]
-        }
-      ],
-      "users": [
-        {
-          "report": "User Activity",
-          "category": "Users",
-          "columns": [
-            {"header": "User ID", "description": "Unique identifier for the user"},
-            {"header": "Activity Type", "description": "Type of activity performed by the user"},
-            {"header": "Timestamp", "description": "Time when the activity occurred"}
-          ]
-        },
-        {
-          "report": "Access Patterns",
-          "category": "Users",
-          "columns": [
-            {"header": "User ID", "description": "Unique identifier for the user"},
-            {"header": "Location", "description": "Parking lot or area accessed by the user"},
-            {"header": "Access Time", "description": "Time when the access occurred"}
-          ]
-        },
-        {
-          "report": "User Engagement",
-          "category": "Users",
-          "columns": [
-            {"header": "User ID", "description": "Unique identifier for the user"},
-            {"header": "Engagement Level", "description": "Level of engagement based on user interactions"},
-            {"header": "Last Login", "description": "Timestamp of the user's last login"}
-          ]
-        }
-      ],
-      "sensors": [
-        {
-          "report": "Health and Status",
-          "category": "Sensors",
-          "columns": [
-            {"header": "Sensor ID", "description": "Unique identifier for the sensor"},
-            {"header": "Status", "description": "Current operational status of the sensor"},
-            {"header": "Health Score", "description": "Health score indicating the condition of the sensor"}
-          ]
-        },
-        {
-          "report": "Maintenance Requirements",
-          "category": "Sensors",
-          "columns": [
-            {"header": "Sensor ID", "description": "Unique identifier for the sensor"},
-            {"header": "Maintenance Type", "description": "Type of maintenance required"},
-            {"header": "Scheduled Maintenance", "description": "Date for scheduled maintenance"}
-          ]
-        },
-        {
-          "report": "Alert History",
-          "category": "Sensors",
-          "columns": [
-            {"header": "Sensor ID", "description": "Unique identifier for the sensor"},
-            {"header": "Alert Type", "description": "Type of alert triggered by the sensor"},
-            {"header": "Alert Timestamp", "description": "Time when the alert occurred"}
-          ]
-        }
-      ]
-    }
+  "reports": {
+    "all": [
+      {
+        "report": "Occupancy Trends",
+        "category": "Parking Lots",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Occupancy Rate",
+            "description": "Percentage of parking spaces in use"
+          },
+          {
+            "header": "Total Spaces",
+            "description": "Total number of parking spaces"
+          }
+        ]
+      },
+      {
+        "report": "Revenue Analysis",
+        "category": "Parking Lots",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Income",
+            "description": "Total income generated"
+          },
+          {
+            "header": "Session Count",
+            "description": "Number of payment transactions"
+          }
+        ]
+      },
+      {
+        "report": "Time Analysis",
+        "category": "Parking Lots",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Average Session Time",
+            "description": "Average duration of parking sessions"
+          },
+          {
+            "header": "Peak Hours",
+            "description": "Busiest hours of the day"
+          }
+        ]
+      },
+      {
+        "report": "Maintenance Needs",
+        "category": "Parking Lots",
+        "available": false,
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Maintenance Requests",
+            "description": "Number of maintenance requests"
+          },
+          {
+            "header": "Critical Issues",
+            "description": "Number of critical issues"
+          }
+        ]
+      },
+      {
+        "report": "Usage Patterns",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Session ID",
+            "description": "Unique identifier for the session"
+          },
+          {
+            "header": "User ID",
+            "description": "ID of the user associated with the session"
+          },
+          {
+            "header": "Start Time",
+            "description": "Time when the session started"
+          }
+        ]
+      },
+      {
+        "report": "Peak Usage Hours",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Hour",
+            "description": "Specific hour of the day"
+          },
+          {
+            "header": "Total Sessions",
+            "description": "Number of sessions during that hour"
+          },
+          {
+            "header": "Average Duration",
+            "description": "Average duration of sessions in that hour"
+          }
+        ]
+      },
+      {
+        "report": "Session Duration",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Session ID",
+            "description": "Unique identifier for the session"
+          },
+          {
+            "header": "Duration",
+            "description": "Duration of the session in minutes"
+          },
+          {
+            "header": "User Feedback",
+            "description": "Feedback provided by the user after the session"
+          }
+        ]
+      },
+      {
+        "report": "Session Distribution",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Total Sessions",
+            "description": "Number of sessions on that date"
+          },
+          {
+            "header": "Busiest Location",
+            "description": "Location with the highest session count"
+          }
+        ]
+      },
+      {
+        "report": "User Activity",
+        "category": "Users",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "User ID",
+            "description": "Unique identifier for the user"
+          },
+          {
+            "header": "Activity Type",
+            "description": "Type of activity performed by the user"
+          },
+          {
+            "header": "Timestamp",
+            "description": "Time when the activity occurred"
+          }
+        ]
+      },
+      {
+        "report": "Access Patterns",
+        "category": "Users",
+        "available": false,
+        "columns": [
+          {
+            "header": "User ID",
+            "description": "Unique identifier for the user"
+          },
+          {
+            "header": "Location",
+            "description": "Parking lot or area accessed by the user"
+          },
+          {
+            "header": "Access Time",
+            "description": "Time when the access occurred"
+          }
+        ]
+      },
+      {
+        "report": "User Engagement",
+        "category": "Users",
+        "available": false,
+        "columns": [
+          {
+            "header": "User ID",
+            "description": "Unique identifier for the user"
+          },
+          {
+            "header": "Engagement Level",
+            "description": "Level of engagement based on user interactions"
+          },
+          {
+            "header": "Last Login",
+            "description": "Timestamp of the user's last login"
+          }
+        ]
+      },
+      {
+        "report": "Health and Status",
+        "category": "Sensors",
+        "available": false,
+        "columns": [
+          {
+            "header": "Sensor ID",
+            "description": "Unique identifier for the sensor"
+          },
+          {
+            "header": "Status",
+            "description": "Current operational status of the sensor"
+          },
+          {
+            "header": "Health Score",
+            "description": "Health score indicating the condition of the sensor"
+          }
+        ]
+      },
+      {
+        "report": "Maintenance Requirements",
+        "category": "Sensors",
+        "available": false,
+        "columns": [
+          {
+            "header": "Sensor ID",
+            "description": "Unique identifier for the sensor"
+          },
+          {
+            "header": "Maintenance Type",
+            "description": "Type of maintenance required"
+          },
+          {
+            "header": "Scheduled Maintenance",
+            "description": "Date for scheduled maintenance"
+          }
+        ]
+      },
+      {
+        "report": "Alert History",
+        "category": "Sensors",
+        "available": false,
+        "columns": [
+          {
+            "header": "Sensor ID",
+            "description": "Unique identifier for the sensor"
+          },
+          {
+            "header": "Alert Type",
+            "description": "Type of alert triggered by the sensor"
+          },
+          {
+            "header": "Alert Timestamp",
+            "description": "Time when the alert occurred"
+          }
+        ]
+      }
+    ],
+    "parking_lots": [
+      {
+        "report": "Occupancy Trends",
+        "category": "Parking Lots",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Occupancy Rate",
+            "description": "Percentage of parking spaces in use"
+          },
+          {
+            "header": "Total Spaces",
+            "description": "Total number of parking spaces"
+          }
+        ]
+      },
+      {
+        "report": "Revenue Analysis",
+        "category": "Parking Lots",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Income",
+            "description": "Total income generated"
+          },
+          {
+            "header": "Session Count",
+            "description": "Number of payment transactions"
+          }
+        ]
+      },
+      {
+        "report": "Time Analysis",
+        "category": "Parking Lots",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Average Session Time",
+            "description": "Average duration of parking sessions"
+          },
+          {
+            "header": "Peak Hours",
+            "description": "Busiest hours of the day"
+          }
+        ]
+      },
+      {
+        "report": "Maintenance Needs",
+        "category": "Parking Lots",
+        "available": false,
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Maintenance Requests",
+            "description": "Number of maintenance requests"
+          },
+          {
+            "header": "Critical Issues",
+            "description": "Number of critical issues"
+          }
+        ]
+      }
+    ],
+    "sessions": [
+      {
+        "report": "Usage Patterns",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Session ID",
+            "description": "Unique identifier for the session"
+          },
+          {
+            "header": "User ID",
+            "description": "ID of the user associated with the session"
+          },
+          {
+            "header": "Start Time",
+            "description": "Time when the session started"
+          }
+        ]
+      },
+      {
+        "report": "Peak Usage Hours",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Hour",
+            "description": "Specific hour of the day"
+          },
+          {
+            "header": "Total Sessions",
+            "description": "Number of sessions during that hour"
+          },
+          {
+            "header": "Average Duration",
+            "description": "Average duration of sessions in that hour"
+          }
+        ]
+      },
+      {
+        "report": "Session Duration",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Session ID",
+            "description": "Unique identifier for the session"
+          },
+          {
+            "header": "Duration",
+            "description": "Duration of the session in minutes"
+          },
+          {
+            "header": "User Feedback",
+            "description": "Feedback provided by the user after the session"
+          }
+        ]
+      },
+      {
+        "report": "Session Distribution",
+        "category": "Sessions",
+        "available": true,
+        "type": "XLSX",
+        "columns": [
+          {
+            "header": "Date",
+            "description": "Date of the report"
+          },
+          {
+            "header": "Total Sessions",
+            "description": "Number of sessions on that date"
+          },
+          {
+            "header": "Busiest Location",
+            "description": "Location with the highest session count"
+          }
+        ]
+      }
+    ],
+    "users": [
+      {
+        "report": "User Activity",
+        "category": "Users",
+        "available": true,
+        "type": "PDF",
+        "columns": [
+          {
+            "header": "User ID",
+            "description": "Unique identifier for the user"
+          },
+          {
+            "header": "Activity Type",
+            "description": "Type of activity performed by the user"
+          },
+          {
+            "header": "Timestamp",
+            "description": "Time when the activity occurred"
+          }
+        ]
+      },
+      {
+        "report": "Access Patterns",
+        "category": "Users",
+        "available": false,
+        "columns": [
+          {
+            "header": "User ID",
+            "description": "Unique identifier for the user"
+          },
+          {
+            "header": "Location",
+            "description": "Parking lot or area accessed by the user"
+          },
+          {
+            "header": "Access Time",
+            "description": "Time when the access occurred"
+          }
+        ]
+      },
+      {
+        "report": "User Engagement",
+        "category": "Users",
+        "available": false,
+        "columns": [
+          {
+            "header": "User ID",
+            "description": "Unique identifier for the user"
+          },
+          {
+            "header": "Engagement Level",
+            "description": "Level of engagement based on user interactions"
+          },
+          {
+            "header": "Last Login",
+            "description": "Timestamp of the user's last login"
+          }
+        ]
+      }
+    ],
+    "sensors": [
+      {
+        "report": "Health and Status",
+        "category": "Sensors",
+        "available": false,
+        "columns": [
+          {
+            "header": "Sensor ID",
+            "description": "Unique identifier for the sensor"
+          },
+          {
+            "header": "Status",
+            "description": "Current operational status of the sensor"
+          },
+          {
+            "header": "Health Score",
+            "description": "Health score indicating the condition of the sensor"
+          }
+        ]
+      },
+      {
+        "report": "Maintenance Requirements",
+        "category": "Sensors",
+        "available": false,
+        "columns": [
+          {
+            "header": "Sensor ID",
+            "description": "Unique identifier for the sensor"
+          },
+          {
+            "header": "Maintenance Type",
+            "description": "Type of maintenance required"
+          },
+          {
+            "header": "Scheduled Maintenance",
+            "description": "Date for scheduled maintenance"
+          }
+        ]
+      },
+      {
+        "report": "Alert History",
+        "category": "Sensors",
+        "available": false,
+        "columns": [
+          {
+            "header": "Sensor ID",
+            "description": "Unique identifier for the sensor"
+          },
+          {
+            "header": "Alert Type",
+            "description": "Type of alert triggered by the sensor"
+          },
+          {
+            "header": "Alert Timestamp",
+            "description": "Time when the alert occurred"
+          }
+        ]
+      }
+    ]
   }
-  
+}
