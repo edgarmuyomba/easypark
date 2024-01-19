@@ -3,6 +3,47 @@ div.reports {
     width: 100%;
 }
 
+/* error handling */
+div.error,
+div.display {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid red;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    background-color: rgb(255, 180, 180);
+    color: red;
+    font-size: 0.8rem;
+    left: calc((100% - 450px)/2);
+    top: -100px;
+    animation: hide 0.3s ease-in-out alternate;
+}
+
+div.display {
+    animation: show 0.3s ease-in-out alternate;
+}
+
+@keyframes show {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes hide {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100px);
+    }
+}
+
 div.header {
     width: 100%;
     height: 7%;

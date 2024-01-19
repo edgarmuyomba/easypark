@@ -25,6 +25,7 @@ export default function Reports() {
 
     // report states
     const [reportData, setReportData] = useState(null);
+    const [error, setError] = useState(false);
     const [notReady, setNotReady] = useState(true);
     const [loading, setLoading] = useState(false);
     const [ready, setReady] = useState(false);
@@ -32,6 +33,7 @@ export default function Reports() {
     const filterRef = useRef(null);
     const inputRef = useRef(null);
     const resultsRef = useRef(null);
+    const errorRef = useRef(null);
 
     // handling search and filter
 
@@ -78,15 +80,26 @@ export default function Reports() {
         setTitles(result);
         setDisplay(null);
         setDetails(null);
+        setError(false);
         setLoading(false);
         setReady(false);
     }, [type])
 
     useEffect(() => {
+        setError(false);
         setLoading(false);
         setReady(false);
         setDetails(report_structure.reports[type]);
     }, [type, display])
+
+    const handleError = () => {
+        errorRef.current.className = styles.display;
+        errorRef.current.style.top = "0";
+        setTimeout(() => {
+            errorRef.current.className = styles.error;
+            errorRef.current.style.top = "-100px";
+        }, 3000);
+    }
 
     useEffect(() => {
         if (details !== null && display !== null) {
@@ -104,11 +117,12 @@ export default function Reports() {
                     const response = await fetch(`${baseUrl}/get_report/${tmp.path}/`);
                     const data = await response.json();
                     setReportData(data);
-                } catch (error) {
-                    console.log("Error fetching report data", error);
-                } finally {
                     setReady(true);
-                }
+                } catch (error) {
+                    setError(true);
+                    handleError();
+                    console.log("Error fetching report data", error);
+                } 
             }
             if (tmp.available) {
                 fetchData();
@@ -123,6 +137,9 @@ export default function Reports() {
 
     return (
         <div className={styles.reports}>
+            <div className={styles.error} ref={errorRef}>
+                <p className={styles.content}>Failed to retrive report. Please check your internet connection!</p>
+            </div>
             <div className={styles.header}>
                 <div className={styles.select}>
                     <label htmlFor="types">Type:</label>
@@ -246,14 +263,19 @@ export default function Reports() {
                                                                 </div>
                                                                 <div className={styles.tile}>
                                                                     <p className={styles.type}>Status</p>
-                                                                    <div className={ready ? styles.ready : loading ? styles.loading : styles.not_ready}> {/* others are not ready and loading*/}
+                                                                    <div className={available ? ready ? styles.ready : error ? styles.not_ready : loading ? styles.loading : styles.not_ready : styles.not_ready}> {/* others are not ready and loading*/}
                                                                         <p className={styles.txt}>
                                                                             {
-                                                                                ready 
-                                                                                ? "Ready"
-                                                                                : loading 
-                                                                                ? "Loading"
-                                                                                : "Not Ready"
+                                                                                available
+                                                                                    ?
+                                                                                    ready
+                                                                                        ? "Ready"
+                                                                                        : error
+                                                                                            ? "Error"
+                                                                                            : loading
+                                                                                                ? "Loading"
+                                                                                                : "Not Ready"
+                                                                                    : "Not Ready"
                                                                             }
                                                                         </p>
                                                                     </div>
