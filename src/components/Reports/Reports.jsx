@@ -233,7 +233,7 @@ export default function Reports() {
                                                             <Icon path={mdiFileDocumentOutline} size={0.65} color="white" />
                                                             <p className={styles.text}>View</p>
                                                         </div>
-                                                        <div className={styles.action}>
+                                                        <div className={styles.action} onClick={() => downloadReport(display.value, reportData)}>
                                                             <Icon path={mdiDownloadBoxOutline} size={0.65} color="white" />
                                                             <p className={styles.text}>Download</p>
                                                         </div>
