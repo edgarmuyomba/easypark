@@ -9,6 +9,8 @@ import getCurrentTime from "./currentTime"
 import Icon from "@mdi/react";
 import { mdiPencilOutline, mdiFileDocumentOutline, mdiDownloadBoxOutline, mdiEmailOutline } from "@mdi/js";
 
+import baseUrl from "../../serverUrl"
+
 export default function Reports() {
 
     const { updateActive } = useContext(SideContext);
@@ -19,6 +21,13 @@ export default function Reports() {
     const [display, setDisplay] = useState(null);
     const [details, setDetails] = useState(null);
     const [filtered, setFiltered] = useState([]);
+    const [available, setAvailable] = useState(false);
+
+    // report states
+    const [reportData, setReportData] = useState(null);
+    const [notReady, setNotReady] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [ready, setReady] = useState(false);
 
     const filterRef = useRef(null);
     const inputRef = useRef(null);
@@ -69,11 +78,43 @@ export default function Reports() {
         setTitles(result);
         setDisplay(null);
         setDetails(null);
+        setLoading(false);
+        setReady(false);
     }, [type])
 
     useEffect(() => {
+        setLoading(false);
+        setReady(false);
         setDetails(report_structure.reports[type]);
     }, [type, display])
+
+    useEffect(() => {
+        if (details !== null && display !== null) {
+            let tmp = null;
+            for (let detail of details) {
+                if (detail.report === display.value) {
+                    tmp = detail;
+                    setAvailable(detail.available)
+                }
+            }
+            // fetching the report
+            const fetchData = async () => {
+                try {
+                    setLoading(true);
+                    const response = await fetch(`${baseUrl}/get_report/${tmp.path}/`);
+                    const data = await response.json();
+                    setReportData(data);
+                } catch (error) {
+                    console.log("Error fetching report data", error);
+                } finally {
+                    setReady(true);
+                }
+            }
+            if (tmp.available) {
+                fetchData();
+            }
+        }
+    }, [display])
 
     useEffect(() => {
         updateActive(6);
@@ -101,12 +142,12 @@ export default function Reports() {
                                 ? (
                                     filtered.map((item, index) => {
                                         return (
-                                            <div key={index} className={styles.result} onClick={() => { 
+                                            <div key={index} className={styles.result} onClick={() => {
                                                 filterRef.current.className = styles.filter;
                                                 resultsRef.current.style.display = "none";
                                                 setDisplay({ id: item.index, value: item.value })
                                             }
-                                                }>
+                                            }>
                                                 <p className={styles.text}>{item.value}</p>
                                             </div>
                                         )
@@ -151,24 +192,42 @@ export default function Reports() {
                                     <div className={styles.title}>
                                         <p className={styles.index}>{display.id}.</p>
                                         <p className={styles.name}>{display.value}</p>
+                                        <div className={available ? styles.available : styles.unavailable}>
+                                            <p className={styles.value}>
+                                                {
+                                                    available
+                                                        ? "Available"
+                                                        : "Unavailable"
+                                                }
+                                            </p>
+                                        </div>
                                     </div>
                                     <div className={styles.actions}>
                                         <div className={styles.action}>
                                             <Icon path={mdiPencilOutline} size={0.65} color="white" />
                                             <p className={styles.text}>Edit</p>
                                         </div>
-                                        <div className={styles.action}>
-                                            <Icon path={mdiFileDocumentOutline} size={0.65} color="white" />
-                                            <p className={styles.text}>View</p>
-                                        </div>
-                                        <div className={styles.action}>
-                                            <Icon path={mdiDownloadBoxOutline} size={0.65} color="white" />
-                                            <p className={styles.text}>Download</p>
-                                        </div>
-                                        <div className={styles.action}>
-                                            <Icon path={mdiEmailOutline} size={0.65} color="white" />
-                                            <p className={styles.text}>Send on email</p>
-                                        </div>
+                                        {
+                                            available && ready
+                                                ? (
+                                                    <>
+
+                                                        <div className={styles.action}>
+                                                            <Icon path={mdiFileDocumentOutline} size={0.65} color="white" />
+                                                            <p className={styles.text}>View</p>
+                                                        </div>
+                                                        <div className={styles.action}>
+                                                            <Icon path={mdiDownloadBoxOutline} size={0.65} color="white" />
+                                                            <p className={styles.text}>Download</p>
+                                                        </div>
+                                                        <div className={styles.action}>
+                                                            <Icon path={mdiEmailOutline} size={0.65} color="white" />
+                                                            <p className={styles.text}>Send on email</p>
+                                                        </div>
+                                                    </>
+                                                )
+                                                : null
+                                        }
                                     </div>
                                     <div className={styles.info}>
                                         {
@@ -183,12 +242,20 @@ export default function Reports() {
                                                                 </div>
                                                                 <div className={styles.tile}>
                                                                     <p className={styles.type}>Format</p>
-                                                                    <p className={styles.txt}>PDF</p>
+                                                                    <p className={styles.txt}>{detail.type}</p>
                                                                 </div>
                                                                 <div className={styles.tile}>
                                                                     <p className={styles.type}>Status</p>
-                                                                    <div className={styles.ready}> {/* others are not ready and loading*/}
-                                                                        <p className={styles.txt}>Ready</p>
+                                                                    <div className={ready ? styles.ready : loading ? styles.loading : styles.not_ready}> {/* others are not ready and loading*/}
+                                                                        <p className={styles.txt}>
+                                                                            {
+                                                                                ready 
+                                                                                ? "Ready"
+                                                                                : loading 
+                                                                                ? "Loading"
+                                                                                : "Not Ready"
+                                                                            }
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                                 <div className={styles.tile}>

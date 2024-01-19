@@ -3,6 +3,7 @@
     "all": [
       {
         "report": "Occupancy Trends",
+        "path": "occupancy_trends",
         "category": "Parking Lots",
         "available": true,
         "type": "PDF",
@@ -23,6 +24,7 @@
       },
       {
         "report": "Revenue Analysis",
+        "path": "revenue_analysis",
         "category": "Parking Lots",
         "available": true,
         "type": "PDF",
@@ -43,6 +45,7 @@
       },
       {
         "report": "Time Analysis",
+        "path": "time_analysis",
         "category": "Parking Lots",
         "available": true,
         "type": "PDF",
@@ -63,8 +66,10 @@
       },
       {
         "report": "Maintenance Needs",
+        "path": "maintenance_needs",
         "category": "Parking Lots",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Date",
@@ -82,6 +87,7 @@
       },
       {
         "report": "Usage Patterns",
+        "path": "usage_patterns",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -102,6 +108,7 @@
       },
       {
         "report": "Peak Usage Hours",
+        "path": "peak_usage_hours",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -122,6 +129,7 @@
       },
       {
         "report": "Session Duration",
+        "path": "session_duration",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -142,6 +150,7 @@
       },
       {
         "report": "Session Distribution",
+        "path": "session_distribution",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -162,6 +171,7 @@
       },
       {
         "report": "User Activity",
+        "path": "user_activity",
         "category": "Users",
         "available": true,
         "type": "PDF",
@@ -182,8 +192,10 @@
       },
       {
         "report": "Access Patterns",
+        "path": "access_patterns",
         "category": "Users",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "User ID",
@@ -201,8 +213,10 @@
       },
       {
         "report": "User Engagement",
+        "path": "user_engagement",
         "category": "Users",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "User ID",
@@ -220,8 +234,10 @@
       },
       {
         "report": "Health and Status",
+        "path": "health_and_status",
         "category": "Sensors",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Sensor ID",
@@ -239,8 +255,10 @@
       },
       {
         "report": "Maintenance Requirements",
+        "path": "maintenance_requirements",
         "category": "Sensors",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Sensor ID",
@@ -258,8 +276,10 @@
       },
       {
         "report": "Alert History",
+        "path": "alert_history",
         "category": "Sensors",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Sensor ID",
@@ -279,6 +299,7 @@
     "parking_lots": [
       {
         "report": "Occupancy Trends",
+        "path": "occupancy_trends",
         "category": "Parking Lots",
         "available": true,
         "type": "PDF",
@@ -299,6 +320,7 @@
       },
       {
         "report": "Revenue Analysis",
+        "path": "revenue_analysis",
         "category": "Parking Lots",
         "available": true,
         "type": "PDF",
@@ -319,6 +341,7 @@
       },
       {
         "report": "Time Analysis",
+        "path": "time_analysis",
         "category": "Parking Lots",
         "available": true,
         "type": "PDF",
@@ -339,8 +362,10 @@
       },
       {
         "report": "Maintenance Needs",
+        "path": "maintenance_needs",
         "category": "Parking Lots",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Date",
@@ -360,6 +385,7 @@
     "sessions": [
       {
         "report": "Usage Patterns",
+        "path": "usage_patterns",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -380,6 +406,7 @@
       },
       {
         "report": "Peak Usage Hours",
+        "path": "peak_usage_hours",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -400,6 +427,7 @@
       },
       {
         "report": "Session Duration",
+        "path": "session_duration",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -420,6 +448,7 @@
       },
       {
         "report": "Session Distribution",
+        "path": "session_distribution",
         "category": "Sessions",
         "available": true,
         "type": "XLSX",
@@ -442,6 +471,7 @@
     "users": [
       {
         "report": "User Activity",
+        "path": "user_activity",
         "category": "Users",
         "available": true,
         "type": "PDF",
@@ -462,8 +492,10 @@
       },
       {
         "report": "Access Patterns",
+        "path": "access_patterns",
         "category": "Users",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "User ID",
@@ -481,8 +513,10 @@
       },
       {
         "report": "User Engagement",
+        "path": "user_engagement",
         "category": "Users",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "User ID",
@@ -502,8 +536,10 @@
     "sensors": [
       {
         "report": "Health and Status",
+        "path": "health_and_status",
         "category": "Sensors",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Sensor ID",
@@ -521,8 +557,10 @@
       },
       {
         "report": "Maintenance Requirements",
+        "path": "maintenance_requirements",
         "category": "Sensors",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Sensor ID",
@@ -540,8 +578,10 @@
       },
       {
         "report": "Alert History",
+        "path": "alert_history",
         "category": "Sensors",
         "available": false,
+        "type": "PDF",
         "columns": [
           {
             "header": "Sensor ID",

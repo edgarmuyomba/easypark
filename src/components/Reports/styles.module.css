@@ -157,6 +157,23 @@ div.title > p.index {
     color: lightgray;
 }
 
+div.available,
+div.unavailable {
+    margin-left: auto;
+    border-radius: 5px;
+    padding: 0.2rem;
+    color: white;
+    font-size: 0.8rem;
+}
+
+div.available {
+    background-color: green;
+}
+
+div.unavailable {
+    background-color: tomato;
+}
+
 div.actions {
     padding: 1rem 1.5rem;
     display: flex;
