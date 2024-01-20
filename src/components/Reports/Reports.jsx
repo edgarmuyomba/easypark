@@ -115,20 +115,32 @@ export default function Reports() {
                 try {
                     setLoading(true);
                     const response = await fetch(`${baseUrl}/get_report/${tmp.path}/`);
-                    const data = await response.json();
-                    setReportData(data);
+                    const blob = await response.blob();
+                    // const contentDisposition = response.headers.get('Content-Disposition');
+                    // const filenameFromHeader = contentDisposition ? contentDisposition.split('filename=')[1] : "Report.pdf";
+                    setReportData(blob);
                     setReady(true);
                 } catch (error) {
                     setError(true);
                     handleError();
                     console.log("Error fetching report data", error);
-                } 
+                }
             }
             if (tmp.available) {
                 fetchData();
             }
         }
     }, [display])
+
+    // download the file
+    const handleDownload = async () => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(reportData);
+        link.download = display.value;
+        document.body.appendChild(link);
+        link.click();
+        link.href = '';
+    }
 
     useEffect(() => {
         updateActive(6);
@@ -233,7 +245,7 @@ export default function Reports() {
                                                             <Icon path={mdiFileDocumentOutline} size={0.65} color="white" />
                                                             <p className={styles.text}>View</p>
                                                         </div>
-                                                        <div className={styles.action} onClick={() => downloadReport(display.value, reportData)}>
+                                                        <div className={styles.action} onClick={() => handleDownload()}>
                                                             <Icon path={mdiDownloadBoxOutline} size={0.65} color="white" />
                                                             <p className={styles.text}>Download</p>
                                                         </div>
