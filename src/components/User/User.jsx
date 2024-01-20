@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useEffect, useState, useRef } from "react";
+import { Navigate, useParams, useNavigate } from "react-router-dom"
 
 import styles from "./styles.module.css"
 import Icon from "@mdi/react";
-import { mdiEmailOutline, mdiMapMarkerOutline, mdiCalendarClockOutline } from "@mdi/js";
+import { mdiEmailOutline, mdiMapMarkerOutline, mdiCalendarClockOutline, mdiTrashCanOutline } from "@mdi/js";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import baseUrl from "../../serverUrl";
@@ -14,6 +14,10 @@ export default function User() {
 
     const [loading, setLoading] = useState(true);
     const [sessions, setSessions] = useState([]);
+
+    const messageRef = useRef(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,6 +34,36 @@ export default function User() {
         fetchData();
     }, [])
 
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`${baseUrl}/delete_user/${user_id}/`, { method: "DELETE" });
+            const data = await response.json();
+            if (response.status === 200) {
+                navigate("/users");
+            } else {
+                // display error
+                messageRef.current.textContent = "Failed to complete delete process";
+                messageRef.current.className = styles.show;
+                messageRef.current.style.top = "0";
+                setTimeout(() => {
+                    messageRef.current.className = styles.hide;
+                    messageRef.current.style.top = "-120px";
+                }, 3000);
+                messageRef.current.className = styles.message;
+            }
+        } catch (error) {
+            // display failure
+            messageRef.current.textContent = "Please check your internet connection";
+            messageRef.current.className = styles.show;
+            messageRef.current.style.top = "0";
+            setTimeout(() => {
+                messageRef.current.className = styles.hide;
+                messageRef.current.style.top = "-120px";
+            }, 3000);
+            messageRef.current.className = styles.message;
+        }
+    }
+
     if (loading) {
         return (
             <div className={styles.loading}>
@@ -43,6 +77,8 @@ export default function User() {
     } else {
         return (
             <div className={styles.user}>
+                <div ref={messageRef} className={styles.message}>
+                </div>
                 <div className={styles.header}>
                 </div>
                 <div className={styles.details}>
@@ -61,7 +97,11 @@ export default function User() {
                         </div>
                         <div className={styles.text}>
                             <Icon path={mdiCalendarClockOutline} size={0.7} />
-                            <p className={styles.activity}>Activity</p>
+                            <p className={styles.activity}>{sessions.length > 0 ? sessions[0].parked_on : "No Data"}</p>
+                        </div>
+                        <div className={styles.delete} onClick={() => handleDelete()}>
+                            <Icon path={mdiTrashCanOutline} size={0.7} />
+                            <p className={styles.delete}>Delete</p>
                         </div>
                     </div>
                 </div>

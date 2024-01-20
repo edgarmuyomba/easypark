@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import styles from "./styles.module.css";
 import BeatLoader from "react-spinners/BeatLoader";
 import Icon from "@mdi/react";
-import { mdiTrashCanOutline, mdiMagnify } from "@mdi/js";
+import { mdiMagnify } from "@mdi/js";
 import ToggleSwitch from "../Toggleswitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
@@ -103,9 +103,6 @@ export default function Users() {
                                                         <div className={styles.active}>
                                                             <div className={styles.yes}>Yes</div>
                                                             <div className={styles.no}>No</div>
-                                                        </div>
-                                                        <div className={styles.delete}>
-                                                            <Icon className={styles.delete} path={mdiTrashCanOutline} size={0.7} />
                                                         </div>
                                                     </div>
                                                 </li>

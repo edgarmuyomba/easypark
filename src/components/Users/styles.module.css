@@ -95,7 +95,7 @@ ul.fields {
 div.actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 div.active {
@@ -134,6 +134,7 @@ div.delete {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 5%;
 }
 
 div.delete:hover {

@@ -16,6 +16,46 @@ div.user {
     grid-template-rows: 300px auto;
 }
 
+/* message styles */
+div.message,
+div.show,
+div.hide {
+    position: absolute;
+    padding: 1rem 1.5rem;
+    border: 2px solid tomato;
+    color: red;
+    background-color: lightpink;
+    top: -120px;
+    left: calc((100vh - 100px) / 2);
+    font-size: 0.7rem;
+}
+
+div.show {
+    animation: slideIn 0.5s ease alternate;
+}
+
+div.hide {
+    animation: slideOut 0.5s ease alternate;    
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-120px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-120px);
+    }
+}
+
 div.header {
     grid-area: 1 / 1 / 2 / -1;
     height: 100%;
@@ -49,8 +89,6 @@ div.bio {
 }
 
 div.text {
-    /* border: 1px solid whitesmoke;
-    border-radius: 5px; */
     padding: 0.5rem;
     margin-bottom: 0.3rem;
     display: flex;
@@ -60,6 +98,24 @@ div.text {
 
 div.text > svg {
     color: grey;
+}
+
+div.delete {
+    border: 1px solid tomato;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: red;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+div.delete:hover {
+    background-color: tomato;
+    border: none;
+    color: white;
 }
 
 p.name {
