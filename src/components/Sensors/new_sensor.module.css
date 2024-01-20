@@ -1,0 +1,44 @@
+div.container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+
+div.image {
+    width: 40%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+div.formCont {
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    padding: 1rem;
+}
+
+div.header {
+    display: flex;
+    align-items: center;
+}
+
+p.heading {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+div.close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+}

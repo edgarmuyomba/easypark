@@ -8,9 +8,8 @@ import SideContext from "../../Context";
 import baseUrl from "../../serverUrl";
 
 import Icon from "@mdi/react";
-import { mdiPen, mdiTrashCanOutline } from "@mdi/js";
+import { mdiPen, mdiTrashCanOutline, mdiPlus } from "@mdi/js";
 import sensorIcon from "../../assets/sensor-icon.png"
-import ToggleSwitch from "../Toggleswitch/ToggleSwitch";
 
 export default function Sensors() {
 
@@ -165,89 +164,91 @@ export default function Sensors() {
         )
     } else {
         return (
-            <div className={sideOpen ? styles.tabOpen : styles.container}>
-                <div ref={messageRef} style={messageStyles} className={styles.message}>
-                </div>
-                <div className={styles.sensors}>
-                    {
-                        sensors.map((sense, index) => {
-                            return (
-                                <div key={index} className={styles.sensor}>
-                                    <div className={styles.icon}>
-                                        <img src={sensorIcon} alt="" />
-                                    </div>
-                                    <p className={styles.id}>{sense.id}</p>
-                                    <div className={styles.actions}>
-                                        <div className={styles.edit} onClick={() => toggleSide(sense)}>
-                                            <Icon path={mdiPen} size={0.65} />
+            <>
+                <div className={sideOpen ? styles.tabOpen : styles.container}>
+                    <div ref={messageRef} style={messageStyles} className={styles.message}>
+                    </div>
+                    <div className={styles.sensors}>
+                        {
+                            sensors.map((sense, index) => {
+                                return (
+                                    <div key={index} className={styles.sensor}>
+                                        <div className={styles.icon}>
+                                            <img src={sensorIcon} alt="" />
                                         </div>
-                                        <div className={styles.delete} onClick={() => handleDelete(sense.uuid)}>
-                                            <Icon path={mdiTrashCanOutline} size={0.65} />
+                                        <p className={styles.id}>{sense.id}</p>
+                                        <div className={styles.actions}>
+                                            <div className={styles.edit} onClick={() => toggleSide(sense)}>
+                                                <Icon path={mdiPen} size={0.65} />
+                                            </div>
+                                            <div className={styles.delete} onClick={() => handleDelete(sense.uuid)}>
+                                                <Icon path={mdiTrashCanOutline} size={0.65} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                {
-                    sideOpen
-                        ? null
-                        : (
-                            <div className={styles.pageContainer}>
-                                <div className={styles.pagination}>
-                                    {
-                                        pages.map((_page, index) => {
-                                            return (
-                                                <div key={index} className={index + 1 === page.number ? styles.activePage : styles.page} onClick={() => {
-                                                    index + 1 === page.number
-                                                        ? null
-                                                        : changePage(_page);
-                                                }}>
-                                                    {_page.number}
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </div>
-                        )
-                }
-                <aside className={styles.side} ref={sideRef}>
+                                )
+                            })
+                        }
+                    </div>
                     {
-                        !details
-                            ? (
-                                <div className={styles.loading}>
-                                    <ScaleLoader
-                                        color="whitesmoke"
-                                        loading={!details}
-                                        cssOverride={{
-                                            width: "1.5rem"
-                                        }}
-                                    />
-                                </div>
-                            )
+                        sideOpen
+                            ? null
                             : (
-                                <>
-                                    <div className={styles.lot}>{details.name}</div>
-                                    <div className={styles.slotNo}>{details.slot}</div>
-                                    <div className={styles.occupied}>
-                                        {/* mark the slot as occupied or not */}
-                                        <div className={details.occupied ? styles.taken : styles.status}>
-                                            <p className={styles.value}>
-                                                {
-                                                    details.occupied
-                                                        ? "Occupied"
-                                                        : "Free"
-                                                }
-                                            </p>
-                                        </div>
+                                <div className={styles.pageContainer}>
+                                    <div className={styles.pagination}>
+                                        {
+                                            pages.map((_page, index) => {
+                                                return (
+                                                    <div key={index} className={index + 1 === page.number ? styles.activePage : styles.page} onClick={() => {
+                                                        index + 1 === page.number
+                                                            ? null
+                                                            : changePage(_page);
+                                                    }}>
+                                                        {_page.number}
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
-                                </>
+                                </div>
                             )
                     }
-                </aside>
-            </div>
+                    <aside className={styles.side} ref={sideRef}>
+                        {
+                            !details
+                                ? (
+                                    <div className={styles.loading}>
+                                        <ScaleLoader
+                                            color="whitesmoke"
+                                            loading={!details}
+                                            cssOverride={{
+                                                width: "1.5rem"
+                                            }}
+                                        />
+                                    </div>
+                                )
+                                : (
+                                    <>
+                                        <div className={styles.lot}>{details.name}</div>
+                                        <div className={styles.slotNo}>{details.slot}</div>
+                                        <div className={styles.occupied}>
+                                            {/* mark the slot as occupied or not */}
+                                            <div className={details.occupied ? styles.taken : styles.status}>
+                                                <p className={styles.value}>
+                                                    {
+                                                        details.occupied
+                                                            ? "Occupied"
+                                                            : "Free"
+                                                    }
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+                        }
+                    </aside>
+                </div>
+            </>
         )
     }
 }

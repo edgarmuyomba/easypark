@@ -72,7 +72,8 @@ div.sensors {
     grid-template-rows: repeat(auto-fit, 220px);
 }
 
-div.sensor {
+div.sensor,
+div.new_sensor {
     border-radius: 5px;
     height: 220px;
     padding: 0.5rem;
@@ -84,7 +85,8 @@ div.sensor {
     transition: background-color 0.3s ease;
 }
 
-div.sensor:hover {
+div.sensor:hover,
+div.new_sensor:hover {
     background-color: rgba(21, 31, 44, 0.726);
 }
 
