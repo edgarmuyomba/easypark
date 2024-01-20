@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import styles from "./styles.module.css";
 import BeatLoader from "react-spinners/BeatLoader";
 import Icon from "@mdi/react";
-import { mdiMagnify } from "@mdi/js";
+import { mdiMagnify, mdiPlus } from "@mdi/js";
 import ToggleSwitch from "../Toggleswitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
@@ -76,6 +76,10 @@ export default function Users() {
                             checked={active}
                             onChange={() => setActive((active) => !active)}
                         />
+                    </div>
+                    <div className={styles.new}>
+                        <Icon path={mdiPlus} size={0.7} color="white" />
+                        <p className={styles.text}>New User</p>
                     </div>
                 </div>
                 <div className={styles.table}>

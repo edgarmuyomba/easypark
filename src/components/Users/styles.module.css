@@ -14,7 +14,6 @@ div.filterSearch {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 0.5rem;
 }
 
@@ -44,6 +43,24 @@ div.filter {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-left: auto;
+}
+
+div.new {
+    border-radius: 5px;
+    padding: 0.2rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* gap: 0.5rem; */
+    background-color: green;
+    cursor: pointer;
+}
+
+div.new > p.text {
+    font-size: 0.6rem;
+    color: white;
 }
 
 div.filter > p.text {

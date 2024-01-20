@@ -155,7 +155,8 @@ div.seshHeader {
     font-size: 0.8rem;
 }
 
-div.session {
+div.session,
+div.new_session {
     background-color: rgb(255, 223, 228);
     padding: 0.5rem;
     border-radius: 5px;
@@ -178,4 +179,15 @@ p.time {
 p.amount {
     font-size: 0.7rem;
     color: rgb(0, 122, 0);
+}
+
+div.new_session {
+    justify-content: center;
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
+}
+
+div.new_session:hover {
+    background-color: lightgray;
+    color: white;
 }

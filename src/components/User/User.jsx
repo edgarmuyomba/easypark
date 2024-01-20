@@ -3,7 +3,7 @@ import { Navigate, useParams, useNavigate } from "react-router-dom"
 
 import styles from "./styles.module.css"
 import Icon from "@mdi/react";
-import { mdiEmailOutline, mdiMapMarkerOutline, mdiCalendarClockOutline, mdiTrashCanOutline } from "@mdi/js";
+import { mdiEmailOutline, mdiMapMarkerOutline, mdiCalendarClockOutline, mdiTrashCanOutline, mdiPlus } from "@mdi/js";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import baseUrl from "../../serverUrl";
@@ -120,6 +120,9 @@ export default function User() {
                             )
                         })
                     }
+                    <div className={styles.new_session}>
+                        <Icon path={mdiPlus} size={0.7} />
+                    </div>
                 </div>
             </div>
         )
