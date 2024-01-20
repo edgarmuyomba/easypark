@@ -73,3 +73,17 @@ p.amount {
     font-size: 0.7rem;
     color: rgb(0, 122, 0);
 }
+
+div.new_session {
+    background-color: rgb(228, 228, 228);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+div.new_session:hover {
+    background-color: lightgray;
+    color: white;
+}

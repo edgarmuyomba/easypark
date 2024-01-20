@@ -1,5 +1,7 @@
 import BeatLoader from "react-spinners/BeatLoader";
 import styles from "./styles.module.css";
+import Icon from "@mdi/react";
+import { mdiPlus } from "@mdi/js";
 
 import { useState, useEffect, useContext } from "react";
 import SideContext from "../../Context";
@@ -85,6 +87,9 @@ export default function Sessions() {
                             )
                         })
                     }
+                    <div className={styles.new_session} title="New Session">
+                        <Icon path={mdiPlus} size={0.7} />
+                    </div>
                 </div>
             </div>
         )

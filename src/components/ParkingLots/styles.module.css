@@ -32,6 +32,7 @@ button.addLot {
     border-radius: 5px;
     color: white;
     font-size: 0.75rem;
+    cursor: pointer;
 }
 
 a.lot {
