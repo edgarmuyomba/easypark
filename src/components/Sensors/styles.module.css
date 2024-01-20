@@ -24,6 +24,47 @@ div.tabOpen {
     grid-template-columns: calc(100% - 250px) 250px;
 }
 
+/* message styles  */
+
+div.message,
+div.show,
+div.hide {
+    position: absolute;
+    padding: 1rem 1.5rem;
+    border: 2px solid green;
+    color: green;
+    background-color: lightgreen;
+    top: -120px;
+    left: calc((100vh - 100px) / 2);
+    font-size: 0.7rem;
+}
+
+div.show {
+    animation: slideIn 0.5s ease alternate;
+}
+
+div.hide {
+    animation: slideOut 0.5s ease alternate;    
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-120px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-120px);
+    }
+}
+
 div.sensors {
     display: grid;
     gap: 0.5rem;

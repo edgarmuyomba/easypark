@@ -25,6 +25,9 @@ export default function Sensors() {
     const [id, setId] = useState(-1);
 
     const sideRef = useRef(null);
+    const messageRef = useRef(null);
+
+    const [messageStyles, setMessageStyles] = useState({});
 
     const fetchData = async () => {
         setLoading(true);
@@ -78,17 +81,37 @@ export default function Sensors() {
 
         try {
             const response = await fetch(`${baseUrl}/delete_sensor/${uuid}/`, options);
-            const data = await response.json()
-            console.log(data);
+            const data = await response.json();
             if (response.status === 200) {
                 // display success
                 let tmp = sensors.filter((sensor) => sensor.uuid !== uuid);
                 setSensors([...tmp]);
+                messageRef.current.textContent = data.detail;
             } else {
                 // display error
+                setMessageStyles({
+                    borderColor: "tomato",
+                    backgroundColor: "lightpink",
+                    color: "red"
+                })
+                messageRef.current.textContent = "Failed to complete delete process";
             }
         } catch (error) {
             // display failure
+            setMessageStyles({
+                borderColor: "tomato",
+                backgroundColor: "lightpink",
+                color: "red"
+            })
+            messageRef.current.textContent = "Please check your internet connection";
+        } finally {
+            messageRef.current.className = styles.show;
+            messageRef.current.style.top = "0";
+            setTimeout(() => {
+                messageRef.current.className = styles.hide;
+                messageRef.current.style.top = "-120px";
+            }, 3000);
+            messageRef.current.className = styles.message;
         }
     }
 
@@ -143,6 +166,8 @@ export default function Sensors() {
     } else {
         return (
             <div className={sideOpen ? styles.tabOpen : styles.container}>
+                <div ref={messageRef} style={messageStyles} className={styles.message}>
+                </div>
                 <div className={styles.sensors}>
                     {
                         sensors.map((sense, index) => {
