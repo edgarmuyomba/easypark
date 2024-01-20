@@ -70,6 +70,28 @@ export default function Sensors() {
 
     }, []);
 
+    const handleDelete = async (uuid) => {
+        // sensor click handler is getting in the way
+        const options = {
+            method: "DELETE"
+        };
+
+        try {
+            const response = await fetch(`${baseUrl}/delete_sensor/${uuid}/`, options);
+            const data = await response.json()
+            console.log(data);
+            if (response.status === 200) {
+                // display success
+                let tmp = sensors.filter((sensor) => sensor.uuid !== uuid);
+                setSensors([...tmp]);
+            } else {
+                // display error
+            }
+        } catch (error) {
+            // display failure
+        }
+    }
+
     function toggleSide(sensor) {
         if (sideOpen && id !== sensor.id) {
             fetchDetails(sensor);
@@ -125,16 +147,16 @@ export default function Sensors() {
                     {
                         sensors.map((sense, index) => {
                             return (
-                                <div key={index} className={styles.sensor} onClick={() => toggleSide(sense)}>
+                                <div key={index} className={styles.sensor}>
                                     <div className={styles.icon}>
                                         <img src={sensorIcon} alt="" />
                                     </div>
                                     <p className={styles.id}>{sense.id}</p>
                                     <div className={styles.actions}>
-                                        <div className={styles.edit}>
+                                        <div className={styles.edit} onClick={() => toggleSide(sense)}>
                                             <Icon path={mdiPen} size={0.65} />
                                         </div>
-                                        <div className={styles.delete}>
+                                        <div className={styles.delete} onClick={() => handleDelete(sense.uuid)}>
                                             <Icon path={mdiTrashCanOutline} size={0.65} />
                                         </div>
                                     </div>
@@ -186,10 +208,15 @@ export default function Sensors() {
                                     <div className={styles.slotNo}>{details.slot}</div>
                                     <div className={styles.occupied}>
                                         {/* mark the slot as occupied or not */}
-                                        <ToggleSwitch
-                                            checked={details.occupied === true}
-                                        />
-                                        <p className={styles.text}>Slot is occupied</p>
+                                        <div className={details.occupied ? styles.taken : styles.status}>
+                                            <p className={styles.value}>
+                                                {
+                                                    details.occupied
+                                                        ? "Occupied"
+                                                        : "Free"
+                                                }
+                                            </p>
+                                        </div>
                                     </div>
                                 </>
                             )

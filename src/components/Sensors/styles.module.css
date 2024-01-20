@@ -65,7 +65,8 @@ div.actions {
     margin-top: auto;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
+    width: 90%;
 }
 
 div.edit,
@@ -75,10 +76,9 @@ div.delete {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.25rem;
+    width: 1.25rem;
     padding: 0.3rem;
-    margin-bottom: 0.5rem;
     cursor: pointer;
 }
 
@@ -205,7 +205,21 @@ div.occupied {
     align-items: center;
 }
 
-p.text {
-    font-size: 0.75rem;
-    color: whitesmoke;
+div.taken,
+div.status {
+    border: 1px solid green;
+    color: green;
+    background-color: lightgreen;
+    padding: 0.2rem 0.3rem;
+    border-radius: 5px;
+}
+
+div.taken {
+    border-color: tomato;
+    color: red;
+    background-color: lightcoral;
+}
+
+p.value {
+    font-size: 0.65rem;
 }

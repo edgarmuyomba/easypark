@@ -116,8 +116,6 @@ export default function Reports() {
                     setLoading(true);
                     const response = await fetch(`${baseUrl}/get_report/${tmp.path}/`);
                     const blob = await response.blob();
-                    // const contentDisposition = response.headers.get('Content-Disposition');
-                    // const filenameFromHeader = contentDisposition ? contentDisposition.split('filename=')[1] : "Report.pdf";
                     setReportData(blob);
                     setReady(true);
                 } catch (error) {
@@ -136,11 +134,12 @@ export default function Reports() {
     const handleDownload = async () => {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(reportData);
-        link.download = display.value;
+        link.download = `${display.value} Report`;
         document.body.appendChild(link);
         link.click();
         link.href = '';
     }
+    
 
     useEffect(() => {
         updateActive(6);
@@ -302,13 +301,13 @@ export default function Reports() {
                                                                 <div className={styles.tile}>
                                                                     <p className={styles.type}>Start Date</p>
                                                                     <div className={styles.period}>
-                                                                        <p className={styles.txt}>Now</p>
+                                                                        <p className={styles.txt}>15th, July 2023</p>
                                                                     </div>
                                                                 </div>
                                                                 <div className={styles.tile}>
                                                                     <p className={styles.type}>End Date</p>
                                                                     <div className={styles.period}>
-                                                                        <p className={styles.txt}>Now</p>
+                                                                        <p className={styles.txt}>12th, January 2024</p>
                                                                     </div>
                                                                 </div>
                                                             </section>

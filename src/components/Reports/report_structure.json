@@ -13,12 +13,16 @@
             "description": "Date of the report"
           },
           {
-            "header": "Occupancy Rate",
-            "description": "Percentage of parking spaces in use"
+            "header": "Overall Percentage",
+            "description": "Total Percentage Parking Lot Occupancy"
           },
           {
-            "header": "Total Spaces",
-            "description": "Total number of parking spaces"
+            "header": "Overall Occupancy",
+            "description": "Total Occupancy of Parking Lots"
+          },
+          {
+            "header": "Parking Lot Details",
+            "description": "Name, Percentage Occupancy and Occupancy per Lot"
           }
         ]
       },
@@ -34,12 +38,16 @@
             "description": "Date of the report"
           },
           {
-            "header": "Income",
+            "header": "Total Expected Income Income",
             "description": "Total income generated"
           },
           {
             "header": "Session Count",
             "description": "Number of payment transactions"
+          },
+          {
+            "header": "Parking Lot Details",
+            "description": "Name and Expected Income per Lot"
           }
         ]
       },
@@ -55,7 +63,7 @@
             "description": "Date of the report"
           },
           {
-            "header": "Average Session Time",
+            "header": "Average Session Duration",
             "description": "Average duration of parking sessions"
           },
           {
@@ -141,10 +149,6 @@
           {
             "header": "Duration",
             "description": "Duration of the session in minutes"
-          },
-          {
-            "header": "User Feedback",
-            "description": "Feedback provided by the user after the session"
           }
         ]
       },
@@ -181,12 +185,8 @@
             "description": "Unique identifier for the user"
           },
           {
-            "header": "Activity Type",
-            "description": "Type of activity performed by the user"
-          },
-          {
-            "header": "Timestamp",
-            "description": "Time when the activity occurred"
+            "header": "Sessions",
+            "description": "Sessions undertaken per user"
           }
         ]
       },
@@ -309,12 +309,16 @@
             "description": "Date of the report"
           },
           {
-            "header": "Occupancy Rate",
-            "description": "Percentage of parking spaces in use"
+            "header": "Overall Percentage",
+            "description": "Total Percentage Parking Lot Occupancy"
           },
           {
-            "header": "Total Spaces",
-            "description": "Total number of parking spaces"
+            "header": "Overall Occupancy",
+            "description": "Total Occupancy of Parking Lots"
+          },
+          {
+            "header": "Parking Lot Details",
+            "description": "Name, Percentage Occupancy and Occupancy per Lot"
           }
         ]
       },
@@ -330,12 +334,16 @@
             "description": "Date of the report"
           },
           {
-            "header": "Income",
+            "header": "Total Expected Income Income",
             "description": "Total income generated"
           },
           {
             "header": "Session Count",
             "description": "Number of payment transactions"
+          },
+          {
+            "header": "Parking Lot Details",
+            "description": "Name and Expected Income per Lot"
           }
         ]
       },
@@ -351,7 +359,7 @@
             "description": "Date of the report"
           },
           {
-            "header": "Average Session Time",
+            "header": "Average Session Duration",
             "description": "Average duration of parking sessions"
           },
           {
@@ -439,10 +447,6 @@
           {
             "header": "Duration",
             "description": "Duration of the session in minutes"
-          },
-          {
-            "header": "User Feedback",
-            "description": "Feedback provided by the user after the session"
           }
         ]
       },
@@ -481,12 +485,8 @@
             "description": "Unique identifier for the user"
           },
           {
-            "header": "Activity Type",
-            "description": "Type of activity performed by the user"
-          },
-          {
-            "header": "Timestamp",
-            "description": "Time when the activity occurred"
+            "header": "Sessions",
+            "description": "Sessions undertaken per user"
           }
         ]
       },
