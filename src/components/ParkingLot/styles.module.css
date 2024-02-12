@@ -142,6 +142,33 @@ p.name {
     font-size: 0.8rem;
 }
 
+div.mapButton {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    border-radius: 5px;
+    background-color: lightgreen;
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+div.mapButton > p.text {
+    font-size: 0.6rem;
+    color: darkgreen;
+}
+
+div.mapButton:hover {
+    transform: scaleX(1.05);
+}
+
+div.map {
+    height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 div.lots {
     height: calc(100vh - 90px);
     overflow-x: hidden;

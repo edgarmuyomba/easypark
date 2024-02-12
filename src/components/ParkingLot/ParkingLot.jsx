@@ -2,7 +2,7 @@ import Navbar from "../Navbar/Navbar.jsx";
 
 import styles from "./styles.module.css";
 import Icon from "@mdi/react";
-import { mdiSecurity, mdiCctv, mdiCarBrakeParking, mdiTrashCanOutline, mdiPencilOutline } from "@mdi/js";
+import { mdiSecurity, mdiCctv, mdiCarBrakeParking, mdiTrashCanOutline, mdiPencilOutline, mdiEarth, mdiTagEdit } from "@mdi/js";
 
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
@@ -21,6 +21,7 @@ export default function ParkingLot() {
     const [levels, setLevels] = useState([]);
     const [slots, setSlots] = useState([]);
     const [option, setOption] = useState(null);
+    const [map, setMap] = useState(false);
 
     const responseRef = useRef(null);
     const [response, setResponse] = useState('This is a response');
@@ -68,14 +69,18 @@ export default function ParkingLot() {
 
     (() => {
         // hiding the option block
-        lotsRef.current !== null
-            ?
-            document.onclick = (e) => {
-                let x = e.clientX, y = e.clientY;
-                let rect = lotsRef.current.getBoundingClientRect();
-                if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) setOption(null);
-            }
-            : null
+        try {
+            lotsRef.current !== null
+                ?
+                document.onclick = (e) => {
+                    let x = e.clientX, y = e.clientY;
+                    let rect = lotsRef.current.getBoundingClientRect();
+                    if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) setOption(null);
+                }
+                : null
+        } catch (e) {
+            // do nothing
+        }
     })();
 
     useEffect(() => {
@@ -113,7 +118,7 @@ export default function ParkingLot() {
                         <Icon path={mdiCctv} size={0.8} color="darkgreen" />
                     </div>
                 )
-            case "Valet Parking":
+            case "Valet":
                 return (
                     <div className={styles.icon} style={{ backgroundColor: 'lightsalmon' }}>
                         <Icon path={mdiCarBrakeParking} size={0.8} color="red" />
@@ -141,65 +146,87 @@ export default function ParkingLot() {
                     )
                     : (
                         <>
-                            <div className={styles.lots} ref={lotsRef}>
-                                {
-                                    levels.map((level, index) => {
-                                        return (
-                                            <section key={index} className={styles.lot}>
-                                                <p className={styles.lotNumber}>{`Level ${index + 1}`}</p>
-                                                <div className={styles.slots}>
-                                                    {
-                                                        level.map((slot, index) => {
-                                                            return (
-                                                                <div key={index} className={slot.occupied ? styles.slotOccupied : styles.slot} onClick={() => {
-                                                                    if (option === index) setOption(null);
-                                                                    else setOption(index)
-                                                                }}>
-                                                                    <p className={styles.label} style={{ color: slot.occupied ? 'white' : 'rgb(58, 58, 58)' }}>
-                                                                        {slot.slot_number}
-                                                                    </p>
-                                                                    <div className={option === index ? styles.view : styles.options}>
-                                                                        <ul className={styles.list}>
-                                                                            <li className={styles.option} onClick={() => {
-                                                                                slot.occupied
-                                                                                    ? null
-                                                                                    : handleClick(slot, "park")
+                            {
+                                map
+                                    ? (
+                                        <div className={styles.map}>
+                                            Map here
+                                        </div>
+                                    )
+                                    : (
+                                        <div className={styles.lots} ref={lotsRef}>
+                                            {
+                                                levels.map((level, index) => {
+                                                    return (
+                                                        <section key={index} className={styles.lot}>
+                                                            <p className={styles.lotNumber}>{`Level ${index + 1}`}</p>
+                                                            <div className={styles.slots}>
+                                                                {
+                                                                    level.map((slot, index) => {
+                                                                        return (
+                                                                            <div key={index} className={slot.occupied ? styles.slotOccupied : styles.slot} onClick={() => {
+                                                                                if (option === index) setOption(null);
+                                                                                else setOption(index)
                                                                             }}>
-                                                                                <p className={styles.text}>Park</p>
-                                                                            </li>
-                                                                            <li className={styles.option} onClick={() => {
-                                                                                slot.occupied
-                                                                                    ? handleClick(slot, "release")
-                                                                                    : null
-                                                                            }}>
-                                                                                <p className={styles.text}>Release</p>
-                                                                            </li>
-                                                                            {/* <li className={styles.option}>
+                                                                                <p className={styles.label} style={{ color: slot.occupied ? 'white' : 'rgb(58, 58, 58)' }}>
+                                                                                    {slot.slot_number}
+                                                                                </p>
+                                                                                <div className={option === index ? styles.view : styles.options}>
+                                                                                    <ul className={styles.list}>
+                                                                                        <li className={styles.option} onClick={() => {
+                                                                                            slot.occupied
+                                                                                                ? null
+                                                                                                : handleClick(slot, "park")
+                                                                                        }}>
+                                                                                            <p className={styles.text}>Park</p>
+                                                                                        </li>
+                                                                                        <li className={styles.option} onClick={() => {
+                                                                                            slot.occupied
+                                                                                                ? handleClick(slot, "release")
+                                                                                                : null
+                                                                                        }}>
+                                                                                            <p className={styles.text}>Release</p>
+                                                                                        </li>
+                                                                                        {/* <li className={styles.option}>
                                                                                 <p className={styles.text}>Edit</p>
                                                                             </li>  still figuring out edit block style options */}
-                                                                            <li className={styles.option} onClick={() => {
-                                                                                handleClick(slot, "destroy")
-                                                                            }}>
-                                                                                <p className={styles.text}>Delete</p>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            );
-                                                        })
-                                                    }
-                                                </div>
-                                            </section>
-                                        );
-                                    })
-                                }
-                            </div>
+                                                                                        <li className={styles.option} onClick={() => {
+                                                                                            handleClick(slot, "destroy")
+                                                                                        }}>
+                                                                                            <p className={styles.text}>Delete</p>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        );
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </section>
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                    )
+                            }
+
+
                             <aside className={styles.details}>
                                 <img className={styles.banner} src={details.image} alt="parking_lot_banner" />
                                 <p className={styles.name}>
                                     {details.name}
                                     <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
                                 </p>
+                                {
+                                    !details.structured
+                                        ? (
+                                            <div className={styles.mapButton} onClick={() => { setMap((map) => !map); }}>
+                                                <Icon path={mdiEarth} size={0.7} color="darkgreen" />
+                                                <p className={styles.text}>Toggle Map View</p>
+                                            </div>
+                                        )
+                                        : ''
+                                }
                                 <div className={styles.time}>
                                     <p className={styles.value}>
                                         {details.open} - {details.close}
