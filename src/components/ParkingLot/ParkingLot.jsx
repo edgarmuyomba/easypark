@@ -155,11 +155,11 @@ export default function ParkingLot() {
                                                     {
                                                         level.map((slot, index) => {
                                                             return (
-                                                                <div key={index} className={slot.occupied ? styles.slotOccupied : styles.slot} onClick={() => {
+                                                                <div key={index} className={slot.occupied ? styles.slotOccupied : slot.reserved ? styles.slotReserved : styles.slot} onClick={() => {
                                                                     if (option === index) setOption(null);
                                                                     else setOption(index)
                                                                 }}>
-                                                                    <p className={styles.label} style={{ color: slot.occupied ? 'white' : 'rgb(58, 58, 58)' }}>
+                                                                    <p className={styles.label} style={{ color: slot.occupied || slot.reserved ? 'white' : 'rgb(58, 58, 58)' }}>
                                                                         {slot.slot_number}
                                                                     </p>
                                                                     <div className={option === index ? styles.view : styles.options}>

@@ -165,7 +165,8 @@ div.slots {
 }
 
 div.slot,
-div.slotOccupied {
+div.slotOccupied,
+div.slotReserved {
     background-color: whitesmoke;
     height: 100%;
     overflow: hidden;
@@ -184,12 +185,20 @@ div.slotOccupied {
     background-color: lightcoral;
 }
 
+div.slotReserved {
+    background-color: rgb(255, 204, 109);
+}
+
 div.slot:hover {
     background-color: rgb(201, 201, 201);
 }
 
 div.slotOccupied:hover {
     background-color: rgb(241, 92, 92);
+}
+
+div.slotReserved:hover {
+    background-color: orange;
 }
 
 p.label {
