@@ -199,7 +199,7 @@ export default function ParkingLot() {
                                 }
                             </div>
                             <aside className={styles.details}>
-                                <img className={styles.banner} src={details.image} alt="parking_lot_banner" />
+                                <img className={styles.banner} src={`${baseUrl}${details.image}`} alt="parking_lot_banner" />
                                 <p className={styles.name}>
                                     {details.name}
                                     <Icon className={styles.edit} path={mdiPencilOutline} size={0.5} color="grey" />
