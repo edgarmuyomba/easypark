@@ -1,3 +1,5 @@
+import baseUrl from '../../serverUrl';
+
 export default async function handleSlotOptionClick(slot, slots, action) {
     let result = {};
     switch (action) {
